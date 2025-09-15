@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import 'animate.css/animate.min.css';
+
+/* Wave Animation */
+.wave1 use,
+.wave2 use,
+.wave3 use {
+  animation: waveMove 10s linear infinite;
+}
+
+.wave2 use {
+  animation-duration: 12s;
+  animation-delay: -3s;
+}
+
+.wave3 use {
+  animation-duration: 15s;
+  animation-delay: -5s;
+}
+
+@keyframes waveMove {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-160px);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+

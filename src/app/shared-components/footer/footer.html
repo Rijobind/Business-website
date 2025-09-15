@@ -1,33 +1,42 @@
 <footer class="relative bg-gradient-to-b from-blue-50 to-blue-100 pt-40 pb-10">
-    <div class="absolute top-0 left-0 w-full overflow-hidden leading-none">
-        <svg class="relative block w-full h-24" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
-            viewBox="0 0 1200 120">
-            <path
-                d="M985.66,92.83C906.67,72,823,31,743,14.19,663-2.62,586,3.29,506,25.6,426,47.91,346,86.75,266,100.29,186,113.83,106,102.08,53,92.83L0,84.7V0H1200V27.35C1151,52.46,1064.66,113.64,985.66,92.83Z"
-                fill="white"></path>
+    <div class="absolute top-0 left-0 w-full overflow-hidden leading-none bg-white">
+        <svg class="block w-full h-20 text-blue-100" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28"
+            preserveAspectRatio="none">
+            <defs>
+                <path id="wave-path" d="M-160 44c30 0 58-18 88-18s58 18 88 18 58-18 88-18 58 18 88 18v44h-352z">
+                </path>
+            </defs>
+            <g class="wave1 fill-current text-blue-50">
+                <use xlink:href="#wave-path" x="50" y="3"></use>
+            </g>
+            <g class="wave2 fill-current text-blue-100">
+                <use xlink:href="#wave-path" x="50" y="0"></use>
+            </g>
+            <g class="wave3 fill-current text-blue-50">
+                <use xlink:href="#wave-path" x="50" y="9"></use>
+            </g>
+            <rect x="0" y="44" width="100%" height="100%" class="fill-current text-blue-50"></rect>
         </svg>
     </div>
     <div class="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10">
         <div>
-            <h2 class="text-2xl font-bold text-gray-800">BUDDIES COMMERCIAL<span class="text-red-500">.</span></h2>
-            <p class="text-gray-600 mt-3">
-                BUDDIES COMMERCIAL is a brand owned by BUDDIES COMMERCIAL LLC, registered in USA.
-            </p>
+            <h2 class="text-2xl font-bold text-gray-800">OON SOFT LLC</h2>
             <div class="mt-5 space-y-2 text-gray-700">
-                <p>📍 1209 MOUNTAIN ROAD PL NE, STE R, Albuquerque, New Mexico, 87110, United States</p>
-                <p>📧 hello@buddiescommercial.com</p>
+                <p>📍 30 N Gould St Ste R, Sheridan, WY 82801</p>
+                <p>📧 info@oonsoft.llc</p>
             </div>
         </div>
         <div class="flex flex-col space-y-3 md:items-end text-gray-700">
-            <a href="#" class="hover:text-blue-600">Contact</a>
-            <a href="#" class="hover:text-blue-600">Returns Policy</a>
-            <a href="#" class="hover:text-blue-600">Acceptable Use Policy</a>
-            <a href="#" class="hover:text-blue-600">Cookie Policy</a>
-            <a href="#" class="hover:text-blue-600">Terms of Service</a>
-            <a href="#" class="hover:text-blue-600">Privacy Policy</a>
+            <a (click)="onContact()" class="hover:text-blue-600 cursor-pointer">Contact</a>
+            <a (click)="onReturnsPolicy()" class="hover:text-blue-600 cursor-pointer">Returns Policy</a>
+            <a (click)="onAcceptableUsePolicy()" class="hover:text-blue-600 cursor-pointer">Acceptable Use Policy</a>
+            <a (click)="onCookiePolicy()" class="hover:text-blue-600 cursor-pointer">Cookie Policy</a>
+            <a (click)="onTermsOfcancellationsbilling()" class="hover:text-blue-600 cursor-pointer">Cancellations &
+                Billing</a>
+            <a (click)="onPrivacyPolicy()" class="hover:text-blue-600 cursor-pointer">Privacy Policy</a>
         </div>
     </div>
     <div class="relative z-10 text-center text-gray-500 mt-10 text-sm">
-        © 2025 Buddies Commercial. All rights reserved.
+        © 2025 OON SOFT LLC. All rights reserved.
     </div>
 </footer>

@@ -1,220 +1,473 @@
 <app-header></app-header>
-<section id="hero" class="relative h-screen flex items-center justify-center text-white">
-    <div class="absolute inset-0 overflow-hidden">
-        <video #bgVideo autoplay muted loop playsinline class="w-full h-full object-cover">
-            <source src="assets/home.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-        </video>
-        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+<section id="hero" class="relative bg-gray-900 text-white">
+    <div class="absolute inset-0 bg-gray-900">
+        <img src="assets/home-bg.jpg" alt="OON SOFT LLC"
+            class="w-full h-full object-cover opacity-0 transition-opacity duration-700" loading="eager"
+            onload="this.style.opacity=1" />
+        <div class="absolute inset-0 bg-gradient-to-r from-gray-900/90 via-gray-900/60 to-transparent"></div>
     </div>
 
-    <div class="relative z-10 text-center px-4">
-        <h1 class="text-4xl md:text-6xl font-bold mb-6">
-            Empowering Your Business with Innovative IT Solutions
-        </h1>
-        <p class="max-w-2xl mx-auto mb-8 text-lg md:text-xl">
-            Empowering Your Business Growth Through Innovative IT Solutions Expert
-            Consultation and High-Quality Equipment Designed to Enhance Efficiency
-            and Drive Success in a Digital World With BUDDIES COMMERCIAL
-        </p>
-    </div>
-</section>
-<section class="max-w-6xl mx-auto px-4 py-16">
-    <div class="relative z-10 text-center mb-12">
-        <h1 class="text-4xl md:text-4xl font-extrabold text-gray-800 mb-6 text-center">Our Guiding Principles</h1>
-    </div>
-    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-3 justify-items-center py-12 px-6 bg-gray-50">
-        <div
-            class="bg-white rounded-2xl shadow-md p-8 hover:shadow-2xl hover:-translate-y-2 transition-transform duration-300 w-full max-w-sm border border-gray-100">
-            <div class="w-14 h-14 flex items-center justify-center bg-blue-100 text-blue-600 rounded-xl mb-6 text-3xl">
-                <i class="bi bi-app-indicator"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-gray-800 mb-3">Quality Commitment</h3>
-            <p class="text-gray-600 leading-relaxed">
-                At <span class="font-semibold text-blue-600">BUDDIES COMMERCIAL</span>, we are dedicated to providing
-                the
-                highest quality in everything we do. Every detail meets the highest standards—your satisfaction is our
-                top
-                priority.
-            </p>
-        </div>
-        <div
-            class="bg-white rounded-2xl shadow-md p-8 hover:shadow-2xl hover:-translate-y-2 transition-transform duration-300 w-full max-w-sm border border-gray-100">
-            <div
-                class="w-14 h-14 flex items-center justify-center bg-green-100 text-green-600 rounded-xl mb-6 text-3xl">
-                <i class="bi bi-graph-up-arrow"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-gray-800 mb-3">Customer Satisfaction</h3>
-            <p class="text-gray-600 leading-relaxed">
-                Customer satisfaction is the heart of our business. We build lasting relationships by understanding your
-                needs and
-                delivering exceptional experiences, continuously improving from your feedback.
-            </p>
-        </div>
-        <div
-            class="bg-white rounded-2xl shadow-md p-8 hover:shadow-2xl hover:-translate-y-2 transition-transform duration-300 w-full max-w-sm border border-gray-100">
-            <div
-                class="w-14 h-14 flex items-center justify-center bg-purple-100 text-purple-600 rounded-xl mb-6 text-3xl">
-                <i class="bi bi-shield-check"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-gray-800 mb-3">Innovation & Improvement</h3>
-            <p class="text-gray-600 leading-relaxed">
-                Innovation drives us forward. We constantly explore new ideas & technologies to enhance our offerings,
-                ensuring you
-                always get the most modern, up-to-date solutions.
-            </p>
-        </div>
-    </div>
-</section>
-<section id="about" class="py-20">
-    <div class="max-w-6xl mx-auto px-4" data-aos="fade-up" data-aos-delay="100">
-        <div class="grid gap-12 lg:grid-cols-2 items-center justify-items-center">
-            <div class="relative w-full max-w-lg" data-aos="fade-left" data-aos-delay="300">
-                <img src="assets/about.jpg" alt="About us" class="rounded-xl shadow-lg w-full object-cover">
-                <div class="absolute bottom-6 right-6 bg-white shadow-lg rounded-xl p-6 max-w-sm">
-                    <blockquote class="text-gray-700 italic">
-                        "Excellence is never an accident. It is always the result of high intention, sincere effort, and
-                        intelligent execution."
-                    </blockquote>
-                    <cite class="block mt-3 text-sm text-gray-500">— Aristotle</cite>
-                </div>
-            </div>
-            <div class="w-full max-w-md text-center lg:text-left" data-aos="fade-right" data-aos-delay="200">
-                <h2 class="text-4xl md:text-4xl font-extrabold text-gray-800 mb-6">About us</h2>
-                <p class="text-lg text-gray-700 mb-4">
-                    BUDDIES COMMERCIAL delivers expert IT consultations and integrated technology solutions, offering
-                    top-quality equipment to foster business growth. Our dependable and innovative digital services
-                    empower organizations to thrive in an ever-evolving technological landscape, ensuring they stay
-                    ahead of the competition.
-                </p>
-            </div>
-
-        </div>
-    </div>
-</section>
-<section id="about" class="py-20 bg-gradient-to-b from-white via-red-50 to-white">
-    <div class="max-w-7xl mx-auto px-6 lg:px-12" data-aos="fade-up" data-aos-delay="100">
-        <div class="relative text-center mb-16">
-            <h1 class="text-4xl md:text-4xl font-extrabold text-gray-800 mb-6">Our Services</h1>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                Buddies Commercial offers expert IT consultation and integrated technology solutions designed to enhance
-                business growth. We provide quality IT equipment and dependable digital services to foster innovation
-                and efficiency in your operations.
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 justify-items-center">
-            <div
-                class="group bg-white rounded-2xl text-center shadow-md hover:shadow-2xl p-8 transition duration-300 transform hover:-translate-y-2 w-full max-w-sm">
-                <h3 class="text-2xl font-bold mb-4 text-gray-800">IT Consultation</h3>
-                <p class="text-gray-600 mb-6">
-                    BUDDIES COMMERCIAL offers expert IT consultation services to help businesses navigate their
-                    technology challenges, ensuring they implement the most effective solutions tailored to their
-                    specific needs.
-                </p>
-                <div class="overflow-hidden rounded-xl">
-                    <img src="assets/it-consultation.jpg" alt="IT Consultation"
-                        class="w-full object-cover rounded-xl transform group-hover:scale-105 transition duration-500 ease-in-out"
-                        loading="lazy">
-                </div>
-            </div>
-            <div
-                class="group bg-white rounded-2xl text-center shadow-md hover:shadow-2xl p-8 transition duration-300 transform hover:-translate-y-2 w-full max-w-sm">
-                <h3 class="text-2xl font-bold mb-4 text-gray-800">Integrated Technology Solutions</h3>
-                <p class="text-gray-600 mb-6">
-                    Our integrated technology solutions provide businesses with cohesive and efficient systems that
-                    enhance productivity and facilitate growth, leveraging the latest innovations in the IT sector.
-                </p>
-                <div class="overflow-hidden rounded-xl">
-                    <img src="assets/technology-solutions.jpg" alt="Technology Solutions"
-                        class="w-full object-cover rounded-xl transform group-hover:scale-105 transition duration-500 ease-in-out"
-                        loading="lazy">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="py-20 bg-gradient-to-b from-white via-gray-50 to-white">
-    <div class="max-w-6xl mx-auto px-6">
-        <h2 class="text-4xl md:text-4xl font-extrabold text-gray-800 mb-4 text-center">Testimonials</h2>
-        <p class="text-gray-600 text-center mb-12">See what clients are saying about BUDDIES COMMERCIAL</p>
-        <div class="relative">
-            <div class="overflow-hidden relative">
-                <div class="flex transition-transform duration-500 ease-in-out"
-                    [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
-                    <div *ngFor="let testimonial of testimonials" class="flex-none w-full px-4">
-                        <div
-                            class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transform transition duration-300 text-center">
-                            <p class="text-gray-700 italic mb-6">"{{ testimonial.message }}"</p>
-                            <h3 class="font-semibold text-xl text-blue-600">{{ testimonial.name }}</h3>
-                            <span class="text-sm text-gray-500">{{ testimonial.role }}</span>
+    <div class="relative z-10 flex items-center min-h-[110vh]">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-12">
+                <div
+                    class="col-span-12 md:col-span-10 lg:col-span-7 animate__animated animate__fadeInLeft animate__delay-1s">
+                    <div class="bg-white/10 backdrop-blur-md p-8 rounded-2xl shadow-lg">
+                        <h1
+                            class="text-4xl md:text-5xl font-bold leading-tight mb-4 animate__animated animate__fadeInLeft animate__delay-2s">
+                            OON SOFT LLC
+                        </h1>
+                        <p class="text-lg text-gray-200 mb-6 animate__animated animate__fadeInLeft animate__delay-3s">
+                            A U.S.-registered technology company helping businesses grow through digital innovation.
+                            From social media content to POS software and IT solutions, we deliver innovation,
+                            reliability, and simplicity to organizations worldwide.
+                        </p>
+                        <div class="flex flex-wrap gap-4 mb-6 animate__animated animate__fadeInUp animate__delay-3s">
+                            <a href="#commitments"
+                                class="bg-blue-600 cursor-pointer hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg shadow transition transform hover:scale-105">
+                                Our Commitments
+                            </a>
+                            <a (click)="OnContact()"
+                                class="border cursor-pointer border-white hover:bg-white hover:text-gray-900 text-white font-semibold px-6 py-3 rounded-lg transition transform hover:scale-105">
+                                Contact Us
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <button
-                class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition"
-                (click)="prev()">
-                ‹
-            </button>
-            <button
-                class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition"
-                (click)="next()">
-                ›
-            </button>
+            <div class="mt-10 mb-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div
+                        class="flex items-start gap-4 bg-white/10 backdrop-blur-lg p-6 rounded-xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 animate__animated animate__fadeInUp [animation-delay:4s]">
+                        <div class="text-blue-500 text-4xl">
+                            <i class="bi bi-rocket-takeoff-fill"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Innovation First</h3>
+                            <p class="text-gray-300 text-sm">We stay ahead of digital trends with future-ready
+                                solutions.</p>
+                        </div>
+                    </div>
+                    <div
+                        class="flex items-start gap-4 bg-white/10 backdrop-blur-lg p-6 rounded-xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 animate__animated animate__fadeInUp [animation-delay:4.2s]">
+                        <div class="text-blue-500 text-4xl">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Integrity & Trust</h3>
+                            <p class="text-gray-300 text-sm">We work transparently with ethics and client respect.</p>
+                        </div>
+                    </div>
+                    <div
+                        class="flex items-start gap-4 bg-white/10 backdrop-blur-lg p-6 rounded-xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 animate__animated animate__fadeInUp [animation-delay:4.4s]">
+                        <div class="text-blue-500 text-4xl">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Customer-Centric</h3>
+                            <p class="text-gray-300 text-sm">Your success is our success. We listen and deliver impact.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="flex justify-center mt-6 space-x-3">
-            <span *ngFor="let t of testimonials; let i = index" (click)="goTo(i)"
-                [class.bg-blue-600]="i === currentIndex" [class.bg-gray-300]="i !== currentIndex"
-                class="w-4 h-4 rounded-full cursor-pointer transition-colors duration-300"></span>
+    </div>
+    <svg class="absolute -bottom-0 left-0 w-full h-16 text-white" xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 24 150 28" preserveAspectRatio="none">
+        <defs>
+            <path id="wave-path" d="M-160 44c30 0 58-18 88-18s58 18 88 18 58-18 88-18 58 18 88 18v44h-352z"></path>
+        </defs>
+        <g class="wave1 fill-current text-white/30">
+            <use xlink:href="#wave-path" x="50" y="3"></use>
+        </g>
+        <g class="wave2 fill-current text-white/50">
+            <use xlink:href="#wave-path" x="50" y="0"></use>
+        </g>
+        <g class="wave3 fill-current text-white">
+            <use xlink:href="#wave-path" x="50" y="9"></use>
+        </g>
+        <rect x="0" y="44" width="100%" height="100%" class="fill-current text-white"></rect>
+    </svg>
+</section>
+
+<section class="py-16 max-w-6xl mx-auto px-4 bg-white">
+    <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div appAnimateOnScroll="animate__fadeInLeft" class="animate__delay-1s relative">
+            <p class="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">
+                A Bit About OON SOFT LLC
+            </p>
+            <h2 class="text-4xl font-bold text-gray-900 mb-6 leading-snug">
+                Driving Business Growth Through Digital Innovation
+            </h2>
+            <p class="text-gray-600 mb-6">
+                OON SOFT LLC is a technology company dedicated to helping
+                businesses grow through digital innovation. We specialize in social media
+                content creation and consultation, providing strategies and content to
+                strengthen online presence.
+            </p>
+            <p class="text-gray-600 mb-8">
+                Our Point of Sale (POS) software, offered under a subscription model,
+                streamlines operations and sales for businesses. Additionally, we provide
+                IT products and solutions designed to support organizations of all sizes.
+                Our mission is to deliver innovation, reliability, and simplicity to
+                businesses worldwide.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 text-gray-800">
+                <div class="flex items-center space-x-2">
+                    <span class="text-blue-500 text-lg">✔</span>
+                    <span>Social Media Strategy & Content</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="text-blue-500 text-lg">✔</span>
+                    <span>POS Software Solutions</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="text-blue-500 text-lg">✔</span>
+                    <span>IT Products & Services</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="text-blue-500 text-lg">✔</span>
+                    <span>Business Consultation</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="text-blue-500 text-lg">✔</span>
+                    <span>Reliable & Scalable Solutions</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="text-blue-500 text-lg">✔</span>
+                    <span>Global Reach & Support</span>
+                </div>
+            </div>
+        </div>
+        <div class="relative animate__animated">
+            <img src="assets/about.jpg" alt="Consultation" loading="eager" onload="this.style.opacity=1"
+                class="rounded-lg shadow-lg w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-out">
+            <div appAnimateOnScroll="animate__fadeInRight"
+                class="animate__delay-1s absolute bottom-6 left-6 bg-gray-900 text-white p-6 rounded-md max-w-xs sm:max-w-sm shadow-lg">
+                <h3 class="text-lg font-semibold mb-3">
+                    Need Expert Guidance?
+                </h3>
+                <p class="text-gray-300 text-sm mb-4">
+                    Get a consultation with our team and discover how OON SOFT LLC can
+                    transform your business.
+                </p>
+                <button (click)="OnContact()"
+                    class="px-5 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-blue-400 text-white text-sm font-semibold uppercase shadow-md hover:shadow-lg hover:scale-105 transition">
+                    Get Started →
+                </button>
+            </div>
         </div>
     </div>
 </section>
-<section id="contact" class="py-20 relative bg-gradient-to-br from-blue-50 via-white">
-    <div class="max-w-5xl mx-auto px-6">
-        <div class="bg-white shadow-xl rounded-3xl p-10 md:p-16 relative">
-            <div class="text-center mb-10">
-                <h2 class="text-4xl md:text-4xl font-extrabold text-gray-800 mb-6">We’re eager to hear from you</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">
-                    Every message matters to us. Whether it’s a query, suggestion, or feedback, we value your insights.
+
+<section id="commitments" class="relative py-12 bg-gray-50">
+    <div class="text-center mb-12">
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+            Our Commitments
+        </h1>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+            At <span class="font-semibold text-blue-600">OON SOFT LLC</span>, these
+            principles guide how we create meaningful impact for businesses worldwide.
+        </p>
+    </div>
+    <div class="max-w-6xl mx-auto px-6 grid gap-8 md:grid-cols-2 lg:grid-cols-2">
+        <div appAnimateOnScroll="animate__fadeInLeft"
+            class="flex items-start gap-5 p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1"
+            data-aos="fade-up" data-aos-delay="100">
+            <div
+                class="flex-shrink-0 w-14 h-14 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 text-2xl shadow-inner">
+                <i class="bi bi-lightbulb"></i>
+            </div>
+            <div>
+                <h4 class="text-xl font-semibold text-gray-900 mb-1">Innovation First</h4>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    We innovate to stay ahead of digital trends, ensuring solutions are
+                    always future-ready.
                 </p>
             </div>
-            <form class="space-y-8">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
-                        <input type="text" placeholder="Your Name"
-                            class="w-full rounded-lg border border-gray-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none py-3 px-4 transition" />
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                        <input type="email" placeholder="Your Email"
-                            class="w-full rounded-lg border border-gray-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none py-3 px-4 transition" />
-                    </div>
-                </div>
-                <div class="grid grid-cols-1">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
-                        <input type="text" placeholder="Subject"
-                            class="w-full rounded-lg border border-gray-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none py-3 px-4 transition" />
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                    <textarea rows="5" placeholder="Tell us about your project"
-                        class="w-full rounded-lg border border-gray-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none py-3 px-4 transition"></textarea>
-                </div>
-                <div class="text-center">
-                    <button type="submit"
-                        class="bg-blue-600 text-white px-8 py-3 rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transition transform hover:-translate-y-0.5">
-                        Submit
-                    </button>
-                </div>
-            </form>
+        </div>
+        <div appAnimateOnScroll="animate__fadeInRight"
+            class="flex items-start gap-5 p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1"
+            data-aos="fade-up" data-aos-delay="200">
+            <div
+                class="flex-shrink-0 w-14 h-14 rounded-full bg-green-100 flex items-center justify-center text-green-600 text-2xl shadow-inner">
+                <i class="bi bi-shield-check"></i>
+            </div>
+            <div>
+                <h4 class="text-xl font-semibold text-gray-900 mb-1">Integrity & Trust</h4>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    Guided by ethics and confidentiality, trust is the foundation of every
+                    relationship we build.
+                </p>
+            </div>
+        </div>
+        <div appAnimateOnScroll="animate__fadeInLeft"
+            class="flex items-start gap-5 p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1"
+            data-aos="fade-up" data-aos-delay="300">
+            <div
+                class="flex-shrink-0 w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-2xl shadow-inner">
+                <i class="bi bi-people"></i>
+            </div>
+            <div>
+                <h4 class="text-xl font-semibold text-gray-900 mb-1">Customer-Centric</h4>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    We tailor our services around client needs, creating meaningful impact
+                    for every business we serve.
+                </p>
+            </div>
+        </div>
+        <div appAnimateOnScroll="animate__fadeInRight"
+            class="flex items-start gap-5 p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1"
+            data-aos="fade-up" data-aos-delay="400">
+            <div
+                class="flex-shrink-0 w-14 h-14 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 text-2xl shadow-inner">
+                <i class="bi bi-ui-checks-grid"></i>
+            </div>
+            <div>
+                <h4 class="text-xl font-semibold text-gray-900 mb-1">Simplicity & Usability</h4>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    We build intuitive solutions that simplify complexity, enabling growth
+                    without technical roadblocks.
+                </p>
+            </div>
         </div>
     </div>
-    <div
-        class="absolute top-10 left-10 w-32 h-32 bg-blue-200 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-pulse">
+    <div class="flex justify-center mt-8">
+        <div appAnimateOnScroll="animate__fadeInUp"
+            class="flex items-start gap-5 p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 max-w-xl"
+            data-aos="fade-up" data-aos-delay="500">
+            <div
+                class="flex-shrink-0 w-14 h-14 rounded-full bg-red-100 flex items-center justify-center text-red-600 text-2xl shadow-inner">
+                <i class="bi bi-globe-americas"></i>
+            </div>
+            <div>
+                <h4 class="text-xl font-semibold text-gray-900 mb-1">Global Reach, Local Impact</h4>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    Based in the U.S. but serving worldwide, we combine global vision with
+                    personal, responsive support.
+                </p>
+            </div>
+        </div>
     </div>
 </section>
-<app-footer></app-footer>
+
+<section id="find-a-doctor" class="py-16 bg-gray-50">
+    <div class="container max-w-6xl mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold mb-2 text-gray-800">Popular Products</h2>
+            <p class="text-gray-500 max-w-xl mx-auto">
+                Discover experienced doctors in your specialty and book appointments easily.
+            </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div
+                class="bg-white shadow-lg rounded-xl overflow-hidden transform transition duration-300 hover:scale-105">
+                <div class="relative overflow-hidden">
+                    <img src="assets/home-bg.jpg" alt="Dr. Sarah Mitchell"
+                        class="w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
+                    <div
+                        class="absolute top-4 right-4 bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
+                        AVAILABLE
+                    </div>
+                </div>
+                <div class="p-5 text-center">
+                    <h5 class="text-lg font-semibold mb-1 text-gray-800">Dr. Sarah Mitchell</h5>
+                    <p class="text-teal-600 mb-1">Cardiology</p>
+                    <p class="text-gray-500 mb-3 text-sm">15+ years experience</p>
+                    <div class="flex justify-center items-center mb-4">
+                        <span class="text-yellow-400 flex">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </span>
+                        <span class="text-gray-500 text-sm ml-2">(4.9)</span>
+                    </div>
+                    <div class="flex justify-center gap-3">
+                        <a href="#"
+                            class="border border-teal-600 text-teal-600 text-sm px-4 py-2 rounded-lg hover:bg-teal-50 transition">View
+                            Profile</a>
+                        <a href="#"
+                            class="bg-teal-600 text-white text-sm px-4 py-2 rounded-lg hover:bg-teal-700 transition">Book
+                            Appointment</a>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="bg-white shadow-lg rounded-xl overflow-hidden transform transition duration-300 hover:scale-105">
+                <div class="relative overflow-hidden">
+                    <img src="assets/home-bg.jpg" alt="Dr. Michael Rodriguez"
+                        class="w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
+                    <div
+                        class="absolute top-4 right-4 bg-yellow-400 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
+                        IN SURGERY
+                    </div>
+                </div>
+                <div class="p-5 text-center">
+                    <h5 class="text-lg font-semibold mb-1 text-gray-800">Dr. Michael Rodriguez</h5>
+                    <p class="text-teal-600 mb-1">Neurology</p>
+                    <p class="text-gray-500 mb-3 text-sm">12+ years experience</p>
+                    <div class="flex justify-center items-center mb-4">
+                        <span class="text-yellow-400 flex">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-half"></i>
+                        </span>
+                        <span class="text-gray-500 text-sm ml-2">(4.7)</span>
+                    </div>
+                    <div class="flex justify-center gap-3">
+                        <a href="#"
+                            class="border border-teal-600 text-teal-600 text-sm px-4 py-2 rounded-lg hover:bg-teal-50 transition">View
+                            Profile</a>
+                        <a href="#"
+                            class="bg-teal-600 text-white text-sm px-4 py-2 rounded-lg hover:bg-teal-700 transition">Book
+                            Appointment</a>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="bg-white shadow-lg rounded-xl overflow-hidden transform transition duration-300 hover:scale-105">
+                <div class="relative overflow-hidden">
+                    <img src="assets/home-bg.jpg" alt="Dr. Emily Chen"
+                        class="w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
+                    <div
+                        class="absolute top-4 right-4 bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
+                        AVAILABLE
+                    </div>
+                </div>
+                <div class="p-5 text-center">
+                    <h5 class="text-lg font-semibold mb-1 text-gray-800">Dr. Emily Chen</h5>
+                    <p class="text-teal-600 mb-1">Pediatrics</p>
+                    <p class="text-gray-500 mb-3 text-sm">8+ years experience</p>
+                    <div class="flex justify-center items-center mb-4">
+                        <span class="text-yellow-400 flex">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </span>
+                        <span class="text-gray-500 text-sm ml-2">(5.0)</span>
+                    </div>
+                    <div class="flex justify-center gap-3">
+                        <a href="#"
+                            class="border border-teal-600 text-teal-600 text-sm px-4 py-2 rounded-lg hover:bg-teal-50 transition">View
+                            Profile</a>
+                        <a href="#"
+                            class="bg-teal-600 text-white text-sm px-4 py-2 rounded-lg hover:bg-teal-700 transition">Book
+                            Appointment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 mt-10 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div
+                class="bg-white shadow-lg rounded-xl overflow-hidden transform transition duration-300 hover:scale-105">
+                <div class="relative overflow-hidden">
+                    <img src="assets/home-bg.jpg" alt="Dr. Sarah Mitchell"
+                        class="w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
+                    <div
+                        class="absolute top-4 right-4 bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
+                        AVAILABLE
+                    </div>
+                </div>
+                <div class="p-5 text-center">
+                    <h5 class="text-lg font-semibold mb-1 text-gray-800">Dr. Sarah Mitchell</h5>
+                    <p class="text-teal-600 mb-1">Cardiology</p>
+                    <p class="text-gray-500 mb-3 text-sm">15+ years experience</p>
+                    <div class="flex justify-center items-center mb-4">
+                        <span class="text-yellow-400 flex">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </span>
+                        <span class="text-gray-500 text-sm ml-2">(4.9)</span>
+                    </div>
+                    <div class="flex justify-center gap-3">
+                        <a href="#"
+                            class="border border-teal-600 text-teal-600 text-sm px-4 py-2 rounded-lg hover:bg-teal-50 transition">View
+                            Profile</a>
+                        <a href="#"
+                            class="bg-teal-600 text-white text-sm px-4 py-2 rounded-lg hover:bg-teal-700 transition">Book
+                            Appointment</a>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="bg-white shadow-lg rounded-xl overflow-hidden transform transition duration-300 hover:scale-105">
+                <div class="relative overflow-hidden">
+                    <img src="assets/home-bg.jpg" alt="Dr. Michael Rodriguez"
+                        class="w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
+                    <div
+                        class="absolute top-4 right-4 bg-yellow-400 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
+                        IN SURGERY
+                    </div>
+                </div>
+                <div class="p-5 text-center">
+                    <h5 class="text-lg font-semibold mb-1 text-gray-800">Dr. Michael Rodriguez</h5>
+                    <p class="text-teal-600 mb-1">Neurology</p>
+                    <p class="text-gray-500 mb-3 text-sm">12+ years experience</p>
+                    <div class="flex justify-center items-center mb-4">
+                        <span class="text-yellow-400 flex">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-half"></i>
+                        </span>
+                        <span class="text-gray-500 text-sm ml-2">(4.7)</span>
+                    </div>
+                    <div class="flex justify-center gap-3">
+                        <a href="#"
+                            class="border border-teal-600 text-teal-600 text-sm px-4 py-2 rounded-lg hover:bg-teal-50 transition">View
+                            Profile</a>
+                        <a href="#"
+                            class="bg-teal-600 text-white text-sm px-4 py-2 rounded-lg hover:bg-teal-700 transition">Book
+                            Appointment</a>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="bg-white shadow-lg rounded-xl overflow-hidden transform transition duration-300 hover:scale-105">
+                <div class="relative overflow-hidden">
+                    <img src="assets/home-bg.jpg" alt="Dr. Emily Chen"
+                        class="w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
+                    <div
+                        class="absolute top-4 right-4 bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
+                        AVAILABLE
+                    </div>
+                </div>
+                <div class="p-5 text-center">
+                    <h5 class="text-lg font-semibold mb-1 text-gray-800">Dr. Emily Chen</h5>
+                    <p class="text-teal-600 mb-1">Pediatrics</p>
+                    <p class="text-gray-500 mb-3 text-sm">8+ years experience</p>
+                    <div class="flex justify-center items-center mb-4">
+                        <span class="text-yellow-400 flex">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </span>
+                        <span class="text-gray-500 text-sm ml-2">(5.0)</span>
+                    </div>
+                    <div class="flex justify-center gap-3">
+                        <a href="#"
+                            class="border border-teal-600 text-teal-600 text-sm px-4 py-2 rounded-lg hover:bg-teal-50 transition">View
+                            Profile</a>
+                        <a href="#"
+                            class="bg-teal-600 text-white text-sm px-4 py-2 rounded-lg hover:bg-teal-700 transition">Book
+                            Appointment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<app-contact></app-contact>

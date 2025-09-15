@@ -34,10 +34,13 @@ export class Header {
   onCookiePolicy() {
     this.router.navigate(['/cookie-policy']);
   }
-  onTermsOfService() {
-    this.router.navigate(['/terms-of-service']);
+  onTermsOfcancellationsbilling() {
+    this.router.navigate(['/cancellations-billing']);
   }
   onPrivacyPolicy() {
     this.router.navigate(['/privacy-policy']);
+  }
+  onOrderPage() {
+    this.router.navigate(['/order-page']);
   }
 }

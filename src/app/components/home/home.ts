@@ -1,50 +1,32 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { Header } from "../../shared-components/header/header";
-import { Footer } from "../../shared-components/footer/footer";
+import { AnimateOnScrollDirective } from '../../animate-on-scroll.directive';
+import { Contact } from "../../shared-components/contact/contact";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, Header, Footer],
+  imports: [CommonModule, Header, AnimateOnScrollDirective, Contact],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
-export class Home implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild('bgVideo') bgVideo!: ElementRef<HTMLVideoElement>;
-
-  testimonials = [
-    { name: 'Alice Smith', role: 'CEO, TechCorp', message: 'This product is amazing! Totally boosted our productivity.' },
-    { name: 'John Doe', role: 'Designer, Creatives', message: 'Absolutely love the service. Highly recommend it to everyone.' },
-    { name: 'Emma Johnson', role: 'Manager, InnovateX', message: 'A fantastic experience from start to finish. Very professional.' }
-  ];
-
+export class Home implements AfterViewInit, OnDestroy {
   currentIndex = 0;
   interval: any;
 
-  ngOnInit(): void {
-    this.startAutoSlide();
-  }
+  @ViewChild('bgVideo') bgVideo!: ElementRef<HTMLVideoElement>;
+
+  constructor(private router: Router) { }
 
   ngAfterViewInit(): void {
     const video = this.bgVideo.nativeElement;
-    video.muted = true; // ensure muted
+    video.muted = true;
     video.play().catch(err => {
       console.warn('Autoplay blocked:', err);
       document.body.addEventListener('click', () => video.play(), { once: true });
     });
-  }
-
-  startAutoSlide() {
-    this.interval = setInterval(() => this.next(), 5000);
-  }
-
-  next() {
-    this.currentIndex = (this.currentIndex + 1) % this.testimonials.length;
-  }
-
-  prev() {
-    this.currentIndex = (this.currentIndex - 1 + this.testimonials.length) % this.testimonials.length;
   }
 
   goTo(index: number) {
@@ -53,5 +35,9 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     clearInterval(this.interval);
+  }
+
+  OnContact() {
+    this.router.navigate(['/contact']);
   }
 }
