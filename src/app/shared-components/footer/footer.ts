@@ -11,8 +11,14 @@ export class Footer {
 
   constructor(private router: Router) { }
 
+  OnHome() {
+    this.router.navigate(['/']);
+  }
   onContact() {
     this.router.navigate(['/contact']);
+  }
+  onTermsOfService() {
+    this.router.navigate(['/terms-of-service']);
   }
   onReturnsPolicy() {
     this.router.navigate(['/returns-policy']);

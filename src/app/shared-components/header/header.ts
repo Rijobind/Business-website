@@ -25,6 +25,9 @@ export class Header {
   onContact() {
     this.router.navigate(['/contact']);
   }
+  onTermsOfService() {
+    this.router.navigate(['/terms-of-service']);
+  }
   onReturnsPolicy() {
     this.router.navigate(['/returns-policy']);
   }
@@ -34,7 +37,7 @@ export class Header {
   onCookiePolicy() {
     this.router.navigate(['/cookie-policy']);
   }
-  onTermsOfcancellationsbilling() {
+  oncancellationsbilling() {
     this.router.navigate(['/cancellations-billing']);
   }
   onPrivacyPolicy() {
