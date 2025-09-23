@@ -79,10 +79,12 @@ export class BackendapiService {
     return this.http.post(`${this.apiUrl}/checkout/checkout`, payload);
   }
 
-
-
   getProductById(product_id: string | number): Observable<any> {
     return this.http.get(`${this.apiUrl}/Product/product/${product_id}`);
+  }
+
+  getCustomerListById(userId: string | number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/customer/customer_list/${userId}`);
   }
 
 }

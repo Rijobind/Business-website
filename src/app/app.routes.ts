@@ -17,7 +17,7 @@ export const routes: Routes = [
     { path: 'shop', loadComponent: () => import('./components/shop/shop').then(a => a.Shop) },
     { path: 'cart', loadComponent: () => import('./components/cart/cart').then(a => a.Cart) },
     { path: 'product-details/:id', loadComponent: () => import('./components/product-details/product-details').then(a => a.ProductDetails) },
-
+    { path: 'user-profile', loadComponent: () => import('./components/user-profile/user-profile').then(a => a.UserProfile) },
 ];
 
 @NgModule({
