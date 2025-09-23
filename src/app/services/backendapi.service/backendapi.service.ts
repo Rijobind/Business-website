@@ -11,6 +11,38 @@ export interface ContactPayload {
   message: string;
 }
 
+export interface SimpleCheckoutPayload {
+  userId: string;
+  product_id: string;
+  stock_quantity: number;
+}
+
+export interface CheckoutPalyload {
+  checkoutlist_id: string;
+  userId: string;
+  product_id: string;
+  seller_id: string;
+  price: number;
+  stock_quantity: number;
+  created_at: string;
+  checkout_id: string;
+  address: string;
+  digital_key: string;
+  url: string;
+  isdigital: string;
+  status: string;
+}
+
+export interface RegistrationPayload {
+  firstName: string;
+  lastName: string;
+  fullName?: string;
+  email: string;
+  username: string;
+  password: string;
+  address: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -25,4 +57,32 @@ export class BackendapiService {
       payload
     );
   }
+  getProductList(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/Product/productlist`);
+  }
+  // postLogin(username: string, password: string): Observable<any> {
+  //   return this.http.post(`${this.apiUrl}/customer/login/${username}/${password}`, {});
+  // }
+  // backendapi.service.ts
+  postLogin(username: string, password: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/customer/login/${username}/${password}`, {});
+  }
+
+  postRegistration(payload: RegistrationPayload): Observable<any> {
+    console.log("Posting to:", `${this.apiUrl}/customer/create_customer`);
+    return this.http.post(`${this.apiUrl}/customer/create_customer`, payload);
+  }
+  // postCheckout(payload: CheckoutPalyload[]): Observable<any> {
+  //   return this.http.post(`${this.apiUrl}/checkout/checkout`, payload);
+  // }
+  postCheckout(payload: SimpleCheckoutPayload[]): Observable<any> {
+    return this.http.post(`${this.apiUrl}/checkout/checkout`, payload);
+  }
+
+
+
+  getProductById(product_id: string | number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/Product/product/${product_id}`);
+  }
+
 }

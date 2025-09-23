@@ -1,0 +1,48 @@
+<app-header></app-header>
+<div class="bg-gray-50">
+    <div class="max-w-7xl  mx-auto px-4 py-28">
+        <div class=" mb-10 border-b pb-6">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-gray-800 tracking-tight">
+                Favorites
+            </h1>
+        </div>
+        <div class="flex flex-col md:flex-row gap-8">
+            <div class="md:w-1/2">
+                <img [src]="'http://216.183.222.46:8081/' + product?.im_ProductImages?.[0]?.image_url"
+                    alt="{{ product?.brand }}" class="w-full h-[400px] object-contain rounded-lg shadow-md" />
+            </div>
+
+            <div class="md:w-1/2 flex flex-col justify-between">
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2">{{ product?.brand }}</h2>
+                    <p class="text-gray-600 mb-4">{{ product?.description }}</p>
+
+                    <div class="mb-4">
+                        <span class="text-2xl font-semibold text-teal-600">$ {{ product?.price }}</span>
+                    </div>
+
+                    <div class="mb-4">
+                        <span class="text-sm text-gray-500">Availability:</span>
+                        <span class="ml-2 font-medium"
+                            [ngClass]="{'text-green-600': product?.stock > 0, 'text-red-600': product?.stock <= 0}">
+                            {{ product?.stock > 0 ? 'In Stock' : 'Out of Stock' }}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 mt-6">
+                    <button class="bg-teal-600 text-white px-6 py-2 rounded-lg hover:bg-teal-700 transition">
+                        Add to Cart
+                    </button>
+                    <button
+                        class="border border-teal-600 text-teal-600 px-6 py-2 rounded-lg hover:bg-teal-50 transition">
+                        Buy Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<app-footer></app-footer>

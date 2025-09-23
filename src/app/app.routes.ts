@@ -14,7 +14,10 @@ export const routes: Routes = [
     { path: 'cookie-policy', loadComponent: () => import('./components/cookie-policy/cookie-policy').then(a => a.CookiePolicy) },
     { path: 'privacy-policy', loadComponent: () => import('./components/privacy-policy/privacy-policy').then(a => a.PrivacyPolicy) },
     { path: 'cancellations-billing', loadComponent: () => import('./components/cancellations-billing/cancellations-billing').then(a => a.CancellationsBilling) },
-    { path: 'order-page', loadComponent: () => import('./components/order-page/order-page').then(a => a.OrderPage) },
+    { path: 'shop', loadComponent: () => import('./components/shop/shop').then(a => a.Shop) },
+    { path: 'cart', loadComponent: () => import('./components/cart/cart').then(a => a.Cart) },
+    { path: 'product-details/:id', loadComponent: () => import('./components/product-details/product-details').then(a => a.ProductDetails) },
+
 ];
 
 @NgModule({

@@ -1,46 +1,53 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { BackendapiService, ContactPayload } from '../../services/backendapi.service/backendapi.service';
 import { Header } from "../header/header";
 import { Footer } from "../footer/footer";
-import { BackendapiService, ContactPayload } from '../../services/backendapi.service/backendapi.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-contact',
-  standalone: true,
-  imports: [Header, Footer, ReactiveFormsModule, CommonModule],
   templateUrl: './contact.html',
-  styleUrl: './contact.css'
+  imports: [Header, Footer, ReactiveFormsModule, CommonModule],
 })
-export class Contact {
-  contactForm: FormGroup;
+export class Contact implements OnInit {
+  contactForm!: FormGroup;
   isLoading = false;
+  showSuccess = false;
+  constructor(
+    private fb: FormBuilder,
+    private backendApi: BackendapiService
+  ) { }
 
-  constructor(private fb: FormBuilder, private api: BackendapiService) {
+  ngOnInit(): void {
     this.contactForm = this.fb.group({
-      fullName: ['', [Validators.required, Validators.minLength(2)]],
+      fullName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      subject: ['', [Validators.required]],
-      message: ['', [Validators.required, Validators.minLength(5)]]
+      subject: ['', Validators.required],
+      message: ['', Validators.required],
     });
   }
 
-  onSubmit() {
-    if (this.contactForm.valid) {
-      this.isLoading = true;
-      const payload: ContactPayload = this.contactForm.value;
+  onSubmit(): void {
+    if (this.contactForm.invalid) return;
 
-      this.api.postContactDetails(payload).subscribe({
-        next: (res) => {
-          alert('Your message has been sent successfully!');
-          this.contactForm.reset();
-          this.isLoading = false;
-        },
-        error: (err) => {
-          console.error(err);
-          this.isLoading = false;
-        }
-      });
-    }
+    this.isLoading = true;
+    const payload: ContactPayload = this.contactForm.value;
+
+    this.backendApi.postContactDetails(payload).subscribe({
+      next: (res) => {
+        console.log('Success:', res);
+        this.isLoading = false;
+        this.contactForm.reset();
+        this.showSuccess = true;
+        setTimeout(() => {
+          this.showSuccess = false;
+        }, 2000);
+      },
+      error: (err) => {
+        console.error('Error:', err);
+        this.isLoading = false;
+      },
+    });
   }
 }

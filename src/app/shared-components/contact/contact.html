@@ -57,6 +57,14 @@
                 </div>
 
             </form>
+            <div *ngIf="showSuccess"
+                class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 backdrop-blur-sm z-50">
+                <div
+                    class="bg-white text-green-600 text-lg font-semibold px-10 py-6 rounded-2xl shadow-xl animate-popup">
+                    ✅ Message sent successfully!
+                </div>
+            </div>
+
         </div>
     </div>
 

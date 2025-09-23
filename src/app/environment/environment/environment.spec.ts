@@ -3,7 +3,8 @@ export const environment = {
 
   // ApiUrl: "https://localhost:7012/api/",
 
-  ApiUrl: "/api/"
+  // ApiUrl: "/api/"
+  ApiUrl: "http://216.183.222.46:8081/api"
 
   //ApiUrl: "https://localhost:44389/api/"
   // defaultimagesFoldUrl: "https://localhost:44389/Images/DamageProductImages/",

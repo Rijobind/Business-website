@@ -1,11 +1,68 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { BackendapiService } from '../../services/backendapi.service/backendapi.service';
+import { AuthService } from '../../services/auth.service/auth.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
-  imports: [],
   templateUrl: './login.html',
-  styleUrl: './login.css'
+  styleUrls: ['./login.css'],
+  imports: [CommonModule, FormsModule]
 })
 export class Login {
+  username = '';
+  password = '';
+  showPassword = false;
+  isLoading = false;
 
+  constructor(
+    private api: BackendapiService,
+    private router: Router,
+    private auth: AuthService
+  ) { }
+
+  onLogin() {
+    if (!this.username || !this.password) {
+      alert('Enter username and password');
+      return;
+    }
+
+    this.isLoading = true;
+
+    this.api.postLogin(this.username, this.password).subscribe({
+      next: (res: any) => {
+        this.isLoading = false;
+
+        if (res.success) {
+          const user = res.data;       // get the user object from data
+          const token = res.data.token || ''; // if your API has a token
+          console.log('User to set in AuthService:', user, token);
+          this.auth.setUser(user, token);
+          this.router.navigate(['/cart']);
+        }
+        else {
+          alert(res.message || 'Invalid login');
+        }
+      },
+      error: (err) => {
+        this.isLoading = false;
+        console.error("Login failed:", err);
+        alert('Login failed. Please try again.');
+      }
+    });
+  }
+
+  togglePassword() {
+    this.showPassword = !this.showPassword;
+  }
+
+  onRegister() {
+    this.router.navigate(['/registration']);
+  }
+
+  onForgetPassword() {
+    this.router.navigate(['/forget-password']);
+  }
 }
