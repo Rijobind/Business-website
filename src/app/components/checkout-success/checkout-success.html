@@ -1,1 +1,80 @@
-<p>checkout-success works!</p>
+<app-header></app-header>
+
+<section
+    class="relative bg-gradient-to-br from-indigo-100 via-white to-indigo-50 py-28 min-h-screen flex items-center justify-center">
+    <div class="w-full max-w-md bg-white/80 backdrop-blur-lg border border-gray-200 rounded-3xl shadow-2xl p-8 ">
+
+        <!-- Header -->
+        <div class="text-center">
+            <h2 class="text-3xl font-extrabold text-gray-800">Checkout</h2>
+            <p class="text-gray-500 mt-1">Complete your purchase securely</p>
+        </div>
+
+        <!-- Product List -->
+        <div *ngFor="let item of items" class="mt-8 flex items-center space-x-5">
+            <img [src]="item.image" alt="Product Image"
+                class="w-24 h-24 rounded-2xl shadow-lg border border-gray-200 object-contain" />
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900">{{ item.name }}</h3>
+                <p class="text-sm text-gray-600">Model: {{ item.model }}</p>
+                <p class="text-sm text-gray-600">HS: {{ item.hsCode }}</p>
+                <p class="text-sm text-gray-500">Qty: {{ item.stock_quantity }}</p>
+            </div>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="mt-8 space-y-4">
+            <div class="flex justify-between text-gray-600">
+                <span>Subtotal</span>
+                <span class="font-medium">${{ subtotal }}</span>
+            </div>
+            <div class="flex justify-between text-gray-600">
+                <span>Shipping</span>
+                <span class="text-green-600 font-medium">$ {{ shippingCost }}</span>
+            </div>
+            <div class="flex justify-between font-bold text-gray-900 text-lg border-t pt-3">
+                <span>Total</span>
+                <span>${{ total }}</span>
+            </div>
+        </div>
+
+        <!-- Payment Section -->
+        <div class="mt-8">
+            <label class="block text-gray-700 font-semibold mb-3">Payment Method</label>
+            <div class="flex items-center gap-4">
+                <button
+                    class="flex-1 bg-gray-100 hover:bg-indigo-100 transition p-3 rounded-xl border border-gray-200 shadow-sm hover:shadow-md">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard"
+                        class="h-6 mx-auto" />
+                </button>
+                <button
+                    class="flex-1 bg-gray-100 hover:bg-indigo-100 transition p-3 rounded-xl border border-gray-200 shadow-sm hover:shadow-md">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa"
+                        class="h-6 mx-auto" />
+                </button>
+                <button
+                    class="flex-1 bg-gray-100 hover:bg-indigo-100 transition p-3 rounded-xl border border-gray-200 shadow-sm hover:shadow-md">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal"
+                        class="h-6 mx-auto" />
+                </button>
+            </div>
+        </div>
+
+        <!-- Complete Purchase Button -->
+        <button
+            class="mt-8 w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition duration-300 flex items-center justify-center gap-2">
+            <span>Complete Purchase</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+        </button>
+
+        <!-- Footer Note -->
+        <p class="text-center text-gray-500 text-sm mt-5">
+            🔒 Secure Payment. Your information is encrypted.
+        </p>
+    </div>
+</section>
+
+<app-footer></app-footer>

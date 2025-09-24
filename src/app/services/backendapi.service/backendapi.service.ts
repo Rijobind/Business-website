@@ -11,12 +11,6 @@ export interface ContactPayload {
   message: string;
 }
 
-export interface SimpleCheckoutPayload {
-  userId: string;
-  product_id: string;
-  stock_quantity: number;
-}
-
 export interface CheckoutPalyload {
   checkoutlist_id: string;
   userId: string;
@@ -75,9 +69,10 @@ export class BackendapiService {
   // postCheckout(payload: CheckoutPalyload[]): Observable<any> {
   //   return this.http.post(`${this.apiUrl}/checkout/checkout`, payload);
   // }
-  postCheckout(payload: SimpleCheckoutPayload[]): Observable<any> {
+  postCheckout(payload: any) {
     return this.http.post(`${this.apiUrl}/checkout/checkout`, payload);
   }
+
 
   getProductById(product_id: string | number): Observable<any> {
     return this.http.get(`${this.apiUrl}/Product/product/${product_id}`);

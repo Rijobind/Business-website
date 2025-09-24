@@ -18,6 +18,7 @@ export const routes: Routes = [
     { path: 'cart', loadComponent: () => import('./components/cart/cart').then(a => a.Cart) },
     { path: 'product-details/:id', loadComponent: () => import('./components/product-details/product-details').then(a => a.ProductDetails) },
     { path: 'user-profile', loadComponent: () => import('./components/user-profile/user-profile').then(a => a.UserProfile) },
+    { path: 'checkout-success', loadComponent: () => import('./components/checkout-success/checkout-success').then(a => a.CheckoutSuccess) },
 ];
 
 @NgModule({

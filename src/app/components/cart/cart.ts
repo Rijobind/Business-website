@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Footer } from "../../shared-components/footer/footer";
 import { Header } from "../../shared-components/header/header";
@@ -9,6 +10,7 @@ import { BackendapiService } from '../../services/backendapi.service/backendapi.
 
 @Component({
   selector: 'app-cart',
+  standalone: true,
   imports: [Footer, Header, CommonModule, FormsModule],
   templateUrl: './cart.html',
   styleUrls: ['./cart.css']
@@ -17,21 +19,21 @@ export class Cart implements OnInit {
   cartItems: CartItem[] = [];
   shippingCost = 5;
   loadingCheckout = false;
-  isLoggedIn: boolean = false;
+  isLoggedIn = false;
 
   constructor(
     private cartService: CartService,
     private backendApi: BackendapiService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
     this.cartItems = this.cartService.getItems();
     this.cartService.cart$.subscribe(items => this.cartItems = items);
-
-    const token = localStorage.getItem('token');
-    const userStr = localStorage.getItem('user');
-    this.isLoggedIn = !!(token && userStr);
+    this.authService.user$.subscribe(user => {
+      this.isLoggedIn = !!user;
+    });
   }
 
   get subtotal(): number {
@@ -64,60 +66,82 @@ export class Cart implements OnInit {
     this.cartService.removeItem(id);
   }
 
-  goToLogin() {
+  onCheckoutAction() {
+    if (!this.isLoggedIn) {
+      this.goToLogin();
+    } else {
+      this.checkout();
+    }
+  }
+
+  private goToLogin() {
     localStorage.setItem('redirectAfterLogin', 'cart');
     this.router.navigate(['/login']);
   }
 
-  checkout() {
-    if (!this.isLoggedIn || this.cartItems.length === 0) return;
+  private checkout() {
+    if (this.cartItems.length === 0) return;
 
-    const userStr = localStorage.getItem('user');
-    if (!userStr) return;
-
-    try {
-      const userObj = JSON.parse(userStr);
-      const userId = userObj?.id || userObj?.userId;
-      if (!userId) return;
-
-      this.proceedToCheckout(userId);
-    } catch (err) {
-      console.error('Failed to parse user from localStorage:', err);
-      localStorage.removeItem('user');
-      localStorage.removeItem('token');
-      this.isLoggedIn = false;
+    const user = this.authService.currentUser;
+    if (!user) {
+      this.goToLogin();
+      return;
     }
-  }
 
+    const userId = user?.id || user?.userId;
+    if (!userId) return;
+
+    this.proceedToCheckout(userId);
+  }
 
   private proceedToCheckout(userId: string) {
     this.loadingCheckout = true;
 
-    const checkoutPayload = this.cartItems.map(item => ({
-      userId: userId,
-      product_id: item.product_id,
-      stock_quantity: item.quantity
-    }));
+    const checkoutId = `CHK_${Date.now()}`;
+    const createdAt = new Date().toISOString();
 
-    this.backendApi.postCheckout(checkoutPayload).subscribe({
+    const payload = {
+      checkout_id: checkoutId,
+      userId: userId,
+      product_id: this.cartItems[0]?.product_id ?? '',
+      price: this.subtotal,
+      stock_quantity: this.cartItems.reduce((sum, item) => sum + item.quantity, 0),
+      seller_id: this.cartItems[0]?.seller_id ?? '',
+      im_Checkoutlists: this.cartItems.map(item => ({
+        checkoutlist_id: `${checkoutId}_${item.product_id}`,
+        userId: userId,
+        product_id: item.product_id,
+        seller_id: item.seller_id ?? '',
+        checkout_id: checkoutId,
+        price: item.perPieceRate,
+        stock_quantity: item.quantity,
+        created_at: createdAt,
+        address: '',
+        digital_key: '',
+        url: '',
+        isdigital: 'F',
+        status: 'T'
+      }))
+    };
+
+    console.log("post checkout : ", payload)
+
+    this.backendApi.postCheckout(payload).subscribe({
       next: () => {
         this.cartService.clearCart();
         this.loadingCheckout = false;
+
+        localStorage.setItem('lastCheckout', JSON.stringify(payload));
+
         this.router.navigate(['/checkout-success']);
       },
       error: (err) => {
         console.error('Checkout failed', err);
-
-        if (err.status === 400 || err.status === 401) {
-          localStorage.removeItem('user');
-          localStorage.removeItem('token');
-          this.router.navigate(['/login']);
-        }
-
         this.loadingCheckout = false;
       }
     });
   }
+
 
   OnShop() {
     this.router.navigate(['/shop']);
