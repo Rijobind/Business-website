@@ -71,6 +71,6 @@ export class Login {
   }
 
   onForgetPassword() {
-    this.router.navigate(['/forget-password']);
+    this.router.navigate(['/forgot-password']);
   }
 }

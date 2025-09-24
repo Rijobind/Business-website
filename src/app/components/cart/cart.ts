@@ -124,6 +124,13 @@ export class Cart implements OnInit {
       }))
     };
 
+    // Save totals separately for checkout page
+    localStorage.setItem('checkoutTotals', JSON.stringify({
+      subtotal: this.subtotal,
+      shipping: this.shippingCost,
+      total: this.total
+    }));
+
     console.log("post checkout : ", payload)
 
     this.backendApi.postCheckout(payload).subscribe({
@@ -133,7 +140,9 @@ export class Cart implements OnInit {
 
         localStorage.setItem('lastCheckout', JSON.stringify(payload));
 
-        this.router.navigate(['/checkout-success']);
+        this.router.navigate(['/checkout-success'], {
+          queryParams: { checkoutId: checkoutId }
+        });
       },
       error: (err) => {
         console.error('Checkout failed', err);

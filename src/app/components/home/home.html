@@ -258,79 +258,20 @@
                 Discover our most popular products, handpicked just for you.
             </p>
         </div>
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div
+            <div *ngFor="let product of products"
                 class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 hover:scale-105">
+
                 <a>
-                    <img src="assets/starter.png" alt="Product 1" class="w-full object-cover ">
+                    <img [src]="product?.image_url ? 'http://216.183.222.46:8081/' + product.image_url : 'assets/placeholder.jpg'"
+                        [alt]="product?.title" class="w-full object-cover" />
+
                 </a>
+
                 <div class="p-5 text-center">
-                    <p class="text-sm text-gray-500 mb-3">Best Seller</p>
-                    <a (click)="OnContact()"
-                        class="inline-block bg-teal-600 cursor-pointer text-white text-sm px-4 py-2 rounded-lg hover:bg-teal-700 transition">
-                        Contact Us
-                    </a>
-                </div>
-            </div>
-            <div
-                class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 hover:scale-105">
-                <a>
-                    <img src="assets/growth.png" alt="Product 2" class="w-full object-cover ">
-                </a>
-                <div class="p-5 text-center">
-                    <p class="text-sm text-gray-500 mb-3">Trending Now</p>
-                    <a (click)="OnContact()"
-                        class="inline-block bg-teal-600 cursor-pointer text-white text-sm px-4 py-2 rounded-lg hover:bg-teal-700 transition">
-                        Contact Us
-                    </a>
-                </div>
-            </div>
-            <div
-                class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 hover:scale-105">
-                <a>
-                    <img src="assets/pro.png" alt="Product 3" class="w-full object-cover ">
-                </a>
-                <div class="p-5 text-center">
-                    <p class="text-sm text-gray-500 mb-3">New Arrival</p>
-                    <a (click)="OnContact()"
-                        class="inline-block bg-teal-600 cursor-pointer text-white text-sm px-4 py-2 rounded-lg hover:bg-teal-700 transition">
-                        Contact Us
-                    </a>
-                </div>
-            </div>
-            <div
-                class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 hover:scale-105">
-                <a>
-                    <img src="assets/pos-advance.png" alt="Product 4" class="w-full object-cover ">
-                </a>
-                <div class="p-5 text-center">
-                    <p class="text-sm text-gray-500 mb-3">Popular Choice</p>
-                    <a (click)="OnContact()"
-                        class="inline-block bg-teal-600 cursor-pointer text-white text-sm px-4 py-2 rounded-lg hover:bg-teal-700 transition">
-                        Contact Us
-                    </a>
-                </div>
-            </div>
-            <div
-                class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 hover:scale-105">
-                <a>
-                    <img src="assets/pos-basic.png" alt="Product 5" class="w-full object-cover ">
-                </a>
-                <div class="p-5 text-center">
-                    <p class="text-sm text-gray-500 mb-3">Editor’s Pick</p>
-                    <a (click)="OnContact()"
-                        class="inline-block bg-teal-600 cursor-pointer text-white text-sm px-4 py-2 rounded-lg hover:bg-teal-700 transition">
-                        Contact Us
-                    </a>
-                </div>
-            </div>
-            <div
-                class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 hover:scale-105">
-                <a>
-                    <img src="assets/maintenance-2.jpg" alt="Product 6" class="w-full object-cover ">
-                </a>
-                <div class="p-5 text-center">
-                    <p class="text-sm text-gray-500 mb-3">Limited Stock</p>
+                    <h3 class="font-semibold text-gray-800 mb-2">{{ product.name }}</h3>
+                    <p class="text-gray-600 text-sm mb-3">{{ product.description }}</p>
                     <a (click)="OnContact()"
                         class="inline-block bg-teal-600 cursor-pointer text-white text-sm px-4 py-2 rounded-lg hover:bg-teal-700 transition">
                         Contact Us
@@ -340,7 +281,4 @@
         </div>
     </div>
 </section>
-
-
-
 <app-contact></app-contact>

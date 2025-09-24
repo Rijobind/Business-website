@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { environment } from "../../environment/environment/environment";
@@ -46,18 +46,13 @@ export class BackendapiService {
   constructor(private http: HttpClient, private routes: Router) { }
 
   postContactDetails(payload: ContactPayload): Observable<any> {
-    return this.http.post(
-      `${this.apiUrl}/Contactus/contact`,
-      payload
-    );
+    return this.http.post(`${this.apiUrl}/Contactus/contact`, payload);
   }
+
   getProductList(): Observable<any> {
     return this.http.get(`${this.apiUrl}/Product/productlist`);
   }
-  // postLogin(username: string, password: string): Observable<any> {
-  //   return this.http.post(`${this.apiUrl}/customer/login/${username}/${password}`, {});
-  // }
-  // backendapi.service.ts
+
   postLogin(username: string, password: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/customer/login/${username}/${password}`, {});
   }
@@ -66,13 +61,10 @@ export class BackendapiService {
     console.log("Posting to:", `${this.apiUrl}/customer/create_customer`);
     return this.http.post(`${this.apiUrl}/customer/create_customer`, payload);
   }
-  // postCheckout(payload: CheckoutPalyload[]): Observable<any> {
-  //   return this.http.post(`${this.apiUrl}/checkout/checkout`, payload);
-  // }
+
   postCheckout(payload: any) {
     return this.http.post(`${this.apiUrl}/checkout/checkout`, payload);
   }
-
 
   getProductById(product_id: string | number): Observable<any> {
     return this.http.get(`${this.apiUrl}/Product/product/${product_id}`);
@@ -80,6 +72,46 @@ export class BackendapiService {
 
   getCustomerListById(userId: string | number): Observable<any> {
     return this.http.get(`${this.apiUrl}/customer/customer_list/${userId}`);
+  }
+
+  getCheckoutDetailsById(checkoutId: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/checkout/getcheckout-by-id/${checkoutId}`);
+  }
+
+
+  getProduct(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/Oonsoft/prodct_list_customer`);
+  }
+
+  postResetPassword(email: string): Observable<any> {
+    let headers = new HttpHeaders({
+      'accept': 'application/json'
+    });
+
+    return this.http.post(
+      `${this.apiUrl}/customer/send_reset_password/${email}`,
+      {},
+      { headers }
+    );
+  }
+
+  verifyPasswordToken(email: string, token: string): Observable<any> {
+    let headers = new HttpHeaders({ 'accept': 'application/json' });
+
+    return this.http.post(
+      `${this.apiUrl}/customer/verify/${email}/${token}`,
+      {},
+      { headers }
+    );
+  }
+
+  resetPassword(token: string, email: string, password: string) {
+    const headers = new HttpHeaders({ 'accept': 'application/json', });
+    return this.http.post(
+      `${this.apiUrl}/customer/reset_password/${token}/${email}/${password}`,
+      {},
+      { headers }
+    );
   }
 
 }
