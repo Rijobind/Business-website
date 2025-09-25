@@ -2,13 +2,18 @@
     [ngClass]="isScrolled ? 'bg-white shadow-md border-gray-200' : isHomePage ? 'bg-transparent' : 'bg-white shadow-md border-gray-200'">
     <hr [ngClass]="isScrolled || !isHomePage ? 'border-gray-300' : 'border-gray-500'" />
     <div class="container mx-auto px-6 md:px-20 py-3 flex justify-between items-center">
+
+        <!-- Logo -->
         <a href="/" class="flex items-center space-x-2">
             <img class="h-7 w-auto" src="assets/oon-soft-logo-new.png" alt="Logo" />
-            <h1 class="text-xl md:text-2xl font-bold tracking-wide transition-colors duration-300"
+            <h1 class="hidden lg:block text-xl md:text-2xl font-bold tracking-wide transition-colors duration-300"
                 [ngClass]="isScrolled ? 'text-gray-800' : isHomePage ? 'text-white' : 'text-gray-800'">
                 OON SOFT LLC
             </h1>
         </a>
+
+
+        <!-- Desktop Nav -->
         <nav class="hidden md:flex items-center space-x-10 font-semibold tracking-wide"
             [ngClass]="isScrolled ? 'text-gray-800' : isHomePage ? 'text-white' : 'text-gray-800'">
             <a href="/"
@@ -19,6 +24,7 @@
                 class="uppercase text-sm px-2 py-1 rounded-md cursor-pointer transition duration-300 hover:bg-gray-500 hover:text-white">
                 Contact
             </a>
+            <!-- Legal Dropdown (only desktop) -->
             <div class="relative group">
                 <button
                     class="uppercase text-sm flex items-center space-x-1 px-2 py-1 rounded-md transition duration-300 hover:bg-gray-500 hover:text-white cursor-pointer">
@@ -54,14 +60,16 @@
             </div>
         </nav>
 
+        <!-- Right Side -->
         <div class="flex items-center space-x-6">
-            <div *ngIf="user$ | async as user" class="relative group">
+            <!-- User menu (desktop only for now) -->
+            <div *ngIf="user$ | async as user" class=" relative group">
                 <div class="cursor-pointer flex items-center space-x-2" title="User menu">
-                    <span
-                        class=" md:inlineuppercase text-sm flex items-center space-x-1 px-2 py-1 rounded-md transition duration-300 hover:bg-gray-500 hover:text-white cursor-pointer">
-                        <i
-                            class="fa-solid fa-circle-user text-xl text-blue-600 transition-colors duration-300 group-hover:text-white mr-2"></i>
-                        {{user.fullName || user.username }}</span>
+                    <span [ngClass]="isScrolled ? 'text-gray-800' : isHomePage ? 'text-white' : 'text-gray-800'"
+                        class="uppercase text-sm flex items-center space-x-1 px-2 py-1 rounded-md transition duration-300 hover:bg-gray-500 hover:text-white cursor-pointer">
+                        <i class="fa-solid fa-circle-user text-xl text-blue-600 mr-2"></i>
+                        {{user.fullName || user.username }}
+                    </span>
                 </div>
                 <div
                     class="absolute left-0 mt-3 w-56 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-50 text-gray-700">
@@ -73,6 +81,8 @@
                     </ul>
                 </div>
             </div>
+
+            <!-- Cart -->
             <div class="relative cursor-pointer" (click)="onCart()">
                 <i class="fa-solid fa-cart-shopping text-xl text-blue-500"></i>
                 <span *ngIf="cartCount > 0"
@@ -80,11 +90,53 @@
                     {{ cartCount }}
                 </span>
             </div>
+
+            <!-- Shop button -->
             <div>
                 <button (click)="onShop()"
                     class="px-5 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-blue-400 text-white text-sm font-semibold uppercase shadow-md hover:shadow-lg hover:scale-105 transition">
                     Shop
                 </button>
+            </div>
+
+            <!-- Mobile Menu (3 dots) -->
+            <div class="md:hidden relative">
+                <button (click)="toggleMobileMenu()" class="text-gray-700 focus:outline-none">
+                    <i [ngClass]="isScrolled ? 'text-gray-800' : isHomePage ? 'text-white' : 'text-gray-800'"
+                        class="fa-solid fa-ellipsis-vertical text-2xl"></i>
+                </button>
+                <div *ngIf="mobileMenuOpen"
+                    class="absolute right-0 mt-3 w-56 bg-white rounded-lg shadow-xl z-50 text-gray-700">
+                    <ul class="py-2 text-sm font-medium">
+                        <li><a (click)="onContact()"
+                                class="block px-5 py-2 hover:bg-blue-50 hover:text-blue-600 cursor-pointer">Contact</a>
+                        </li>
+                        <li><a (click)="onTermsOfService()"
+                                class="block px-5 py-2 hover:bg-blue-50 hover:text-blue-600 cursor-pointer">Terms of
+                                Service</a></li>
+                        <li><a (click)="onReturnsPolicy()"
+                                class="block px-5 py-2 hover:bg-blue-50 hover:text-blue-600 cursor-pointer">Returns
+                                Policy</a></li>
+                        <li><a (click)="onAcceptableUsePolicy()"
+                                class="block px-5 py-2 hover:bg-blue-50 hover:text-blue-600 cursor-pointer">Acceptable
+                                Use Policy</a></li>
+                        <li><a (click)="onCookiePolicy()"
+                                class="block px-5 py-2 hover:bg-blue-50 hover:text-blue-600 cursor-pointer">Cookie
+                                Policy</a></li>
+                        <li><a (click)="oncancellationsbilling()"
+                                class="block px-5 py-2 hover:bg-blue-50 hover:text-blue-600 cursor-pointer">Cancellations
+                                & Billing</a></li>
+                        <li><a (click)="onPrivacyPolicy()"
+                                class="block px-5 py-2 hover:bg-blue-50 hover:text-blue-600 cursor-pointer">Privacy
+                                Policy</a></li>
+                        <li><a (click)="goToProfile()"
+                                class="block px-5 py-2 hover:bg-blue-50 hover:text-blue-600 cursor-pointer">My
+                                Account</a></li>
+                        <li><a (click)="onLogout()"
+                                class="block px-5 py-2 hover:bg-blue-50 hover:text-blue-600 cursor-pointer">Logout</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

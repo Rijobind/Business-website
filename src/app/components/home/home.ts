@@ -38,4 +38,9 @@ export class Home {
   OnContact() {
     this.router.navigate(['/contact']);
   }
+
+  OnProductContact(title: string) {
+    this.router.navigate(['/contact'], { queryParams: { title } });
+  }
+
 }

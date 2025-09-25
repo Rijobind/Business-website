@@ -4,6 +4,7 @@ import { BackendapiService, ContactPayload } from '../../services/backendapi.ser
 import { Header } from "../header/header";
 import { Footer } from "../footer/footer";
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -11,12 +12,14 @@ import { CommonModule } from '@angular/common';
   imports: [Header, Footer, ReactiveFormsModule, CommonModule],
 })
 export class Contact implements OnInit {
+  productTitle: string | null = null;
   contactForm!: FormGroup;
   isLoading = false;
   showSuccess = false;
   constructor(
     private fb: FormBuilder,
-    private backendApi: BackendapiService
+    private backendApi: BackendapiService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -25,6 +28,11 @@ export class Contact implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       subject: ['', Validators.required],
       message: ['', Validators.required],
+    });
+
+    this.route.queryParams.subscribe(params => {
+      this.productTitle = params['title'] || null;
+      console.log('Received title:', this.productTitle);
     });
   }
 

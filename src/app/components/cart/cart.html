@@ -1,6 +1,6 @@
 <app-header></app-header>
-
-<div class="max-w-7xl my-28 rounded-3xl mx-auto px-4" data-aos="fade-up" data-aos-delay="100">
+<div class="max-w-7xl my-28 rounded-3xl mx-auto px-4 transform transition-all duration-300 hover:scale-[1.01] animate-fade-in"
+    data-aos="fade-up" data-aos-delay="100">
     <div class="flex justify-between items-center mb-10 border-b pb-6">
         <h1 class="text-3xl md:text-4xl font-extrabold text-gray-800 tracking-tight">
             Shopping Cart
@@ -49,33 +49,27 @@
                                     </div>
                                 </div>
                             </td>
-
                             <td class="py-5 px-6 text-center">
                                 <div class="flex items-center justify-center space-x-2">
                                     <button (click)="decrementQuantity(i)"
                                         class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-red-100 hover:text-red-600 transition">
                                         <i class="fas fa-minus text-sm"></i>
                                     </button>
-
                                     <input type="number" [(ngModel)]="item.quantity" (change)="updateTotalPrice(i)"
                                         min="1"
                                         class="w-16 text-center font-semibold text-gray-800 bg-white border rounded-lg shadow-sm py-1" />
-
                                     <button (click)="incrementQuantity(i)"
                                         class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-green-100 hover:text-green-600 transition">
                                         <i class="fas fa-plus text-sm"></i>
                                     </button>
                                 </div>
                             </td>
-
                             <td class="py-5 px-6 text-right font-medium">
                                 ${{ item.perPieceRate.toFixed(2) }}
                             </td>
-
                             <td class="py-5 px-6 text-right font-bold text-gray-800">
                                 ${{ item.totalPrice.toFixed(2) }}
                             </td>
-
                             <td class="py-5 px-6 text-center">
                                 <button (click)="removeItem(i)" class="text-red-500 hover:text-red-700 transition">
                                     <i class="fas fa-trash"></i>
@@ -106,17 +100,9 @@
                 class="w-full mt-6 py-4 rounded-xl font-semibold shadow transition flex items-center justify-center space-x-2"
                 [ngClass]="isLoggedIn ? 'bg-blue-600 hover:bg-blue-700 text-white' : 'bg-green-600 hover:bg-green-700 text-white'"
                 [disabled]="isLoggedIn && (cartItems.length === 0 || loadingCheckout)">
-
-                <!-- Lock icon only when logged in -->
                 <i *ngIf="isLoggedIn && !loadingCheckout" class="fas fa-lock mr-2"></i>
-
-                <!-- Show login button -->
                 <span *ngIf="!isLoggedIn">Login to Checkout</span>
-
-                <!-- Show normal checkout text -->
                 <span *ngIf="isLoggedIn && !loadingCheckout">Proceed to Checkout</span>
-
-                <!-- Spinner + text while processing -->
                 <span *ngIf="isLoggedIn && loadingCheckout" class="flex items-center space-x-2">
                     <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 24 24">
@@ -132,5 +118,4 @@
         </div>
     </div>
 </div>
-
 <app-footer></app-footer>

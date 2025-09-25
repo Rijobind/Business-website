@@ -1,8 +1,7 @@
 <app-header></app-header>
-
 <section id="user-profile" class="py-28 bg-gray-50">
-    <div class="container max-w-7xl mx-auto px-4">
-        <!-- Header Section -->
+    <div
+        class="container transform transition-all duration-300 hover:scale-[1.01] animate-fade-in max-w-7xl mx-auto px-4">
         <div class="mb-10 border-b pb-6 flex items-center space-x-3">
             <i class="fas fa-user-circle text-3xl text-blue-600"></i>
             <div>
@@ -14,10 +13,7 @@
                 </p>
             </div>
         </div>
-
-        <!-- Info Card -->
         <div class="bg-white overflow-hidden shadow-lg rounded-lg border">
-            <!-- Card Header -->
             <div class="px-4 py-5 sm:px-6 bg-blue-50 border-b border-gray-200 rounded-t-lg">
                 <h3 class="text-lg leading-6 font-medium text-gray-900 flex items-center space-x-2">
                     <i class="fas fa-id-badge text-blue-500"></i>
@@ -27,8 +23,6 @@
                     Here is the information we have for your account.
                 </p>
             </div>
-
-            <!-- Card Body -->
             <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
                 <dl class="sm:divide-y sm:divide-gray-200">
                     <div *ngIf="user$ | async as user; else noUser">
@@ -45,7 +39,6 @@
                                 {{ user.email }}
                             </dd>
                         </div>
-
                         <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 hover:bg-gray-50 transition">
                             <dt class="text-sm font-medium text-gray-500">Address</dt>
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
@@ -53,8 +46,6 @@
                             </dd>
                         </div>
                     </div>
-
-                    <!-- No User Template -->
                     <ng-template #noUser>
                         <div class="py-3 sm:py-5 sm:grid sm:grid-cols-1 sm:gap-4 sm:px-6 text-sm text-gray-500">
                             No user is currently logged in.
@@ -62,11 +53,7 @@
                     </ng-template>
                 </dl>
             </div>
-
-            <!-- Edit Profile Button -->
-
         </div>
     </div>
 </section>
-
 <app-footer></app-footer>

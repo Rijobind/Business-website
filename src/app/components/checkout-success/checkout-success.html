@@ -1,8 +1,8 @@
 <app-header></app-header>
-
 <section
     class="relative bg-gradient-to-br from-indigo-100 via-white to-indigo-50 py-28 min-h-screen flex items-center justify-center">
-    <div class="w-full max-w-md bg-white/80 backdrop-blur-lg border border-gray-200 rounded-3xl shadow-2xl p-8 ">
+    <div
+        class="w-full max-w-md bg-white/80 backdrop-blur-lg border border-gray-200 rounded-3xl shadow-2xl p-8 transform transition-all duration-300 hover:scale-[1.01] animate-fade-in">
         <div class="text-center">
             <h2 class="text-3xl font-extrabold text-gray-800">Checkout</h2>
             <p class="text-gray-500 mt-1">Complete your purchase securely</p>
@@ -16,8 +16,6 @@
                 <p>Price: ${{ item.price }}</p>
             </div>
         </div>
-
-
         <div class="mt-8 space-y-4">
             <div class="flex justify-between text-gray-600">
                 <span>Subtotal</span>
@@ -32,7 +30,6 @@
                 <span>${{ total.toFixed(2) }}</span>
             </div>
         </div>
-
         <div class="mt-8">
             <label class="block text-gray-700 font-semibold mb-3">Payment Method</label>
             <div class="flex items-center gap-4">
@@ -53,7 +50,6 @@
                 </button>
             </div>
         </div>
-
         <button
             class="mt-8 w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition duration-300 flex items-center justify-center gap-2">
             <span>Complete Purchase</span>
@@ -67,5 +63,4 @@
         </p>
     </div>
 </section>
-
 <app-footer></app-footer>

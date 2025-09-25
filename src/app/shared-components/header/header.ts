@@ -16,6 +16,7 @@ export class Header implements OnInit {
   isScrolled = false;
   isHomePage = false;
   cartCount = 0;
+  mobileMenuOpen = false;
 
   user$: Observable<any | null>; // Observable from AuthService
 
@@ -40,6 +41,10 @@ export class Header implements OnInit {
   onLogout() {
     this.auth.clearUser();
     this.router.navigate(['/login']);
+  }
+
+  toggleMobileMenu() {
+    this.mobileMenuOpen = !this.mobileMenuOpen;
   }
 
   @HostListener('window:scroll', [])
