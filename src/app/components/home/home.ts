@@ -27,13 +27,11 @@ export class Home {
     this.apiService.getProduct().subscribe({
       next: (res: any) => {
         console.log('API response:', res);
-        // assign only the array inside data
         this.products = res?.data || [];
       },
       error: (err) => console.error('Error fetching products', err)
     });
   }
-
 
   OnContact() {
     this.router.navigate(['/contact']);

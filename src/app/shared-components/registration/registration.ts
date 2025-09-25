@@ -76,7 +76,7 @@ export class Registration implements OnInit {
       next: (res) => {
         this.isLoading = false;
         alert('Registration successful! Please login.');
-        this.router.navigate(['/login']); // go to login
+        this.router.navigate(['/login']);
       },
       error: (err) => {
         this.isLoading = false;

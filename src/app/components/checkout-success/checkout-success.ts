@@ -13,25 +13,19 @@ import { BackendapiService } from '../../services/backendapi.service/backendapi.
 })
 export class CheckoutSuccess implements OnInit {
   checkout_id: string = '';
-  checkoutData: any = null;        // main checkout info
-  checkoutItems: any[] = [];       // items array
-
+  checkoutData: any = null;
+  checkoutItems: any[] = [];
   subtotal: number = 0;
   shipping: number = 0;
   total: number = 0;
 
-  constructor(
-    private checkoutService: BackendapiService,
-    private route: ActivatedRoute
-  ) { }
+  constructor(private checkoutService: BackendapiService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-
     const totals = JSON.parse(localStorage.getItem('checkoutTotals') || '{}');
     this.subtotal = totals.subtotal || 0;
     this.shipping = totals.shipping || 0;
     this.total = totals.total || 0;
-    // Get checkoutId from query params
     this.route.queryParams.subscribe(params => {
       this.checkout_id = params['checkout_id'];
       if (this.checkout_id) {
@@ -60,7 +54,6 @@ export class CheckoutSuccess implements OnInit {
   }
 
   getTotal(): number {
-    // you can add shipping or other charges here
     return this.getSubtotal();
   }
 }

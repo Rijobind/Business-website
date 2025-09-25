@@ -16,7 +16,6 @@ import { Footer } from "../footer/footer";
 export class ForgotPasswordVerifySuccess {
   message: string = '';
   isLoading: boolean = true;
-
   showButton: boolean = false;
   buttonLabel: string = '';
   buttonAction: () => void = () => { };
@@ -113,13 +112,11 @@ export class ForgotPasswordVerifySuccess {
   }
 
   onButtonClick() {
-    this.isLoading = true; // show spinner
-
-    // Wrap the action in a short delay for spinner visibility
+    this.isLoading = true;
     setTimeout(() => {
       if (this.buttonAction) this.buttonAction();
-      this.isLoading = false; // optional: hide spinner after navigation
-    }, 200); // 200ms delay ensures spinner shows briefly
+      this.isLoading = false;
+    }, 200);
   }
 
 }

@@ -15,11 +15,7 @@ import { CartService } from '../../services/cart.service/cart.service';
 export class ProductDetails {
   product: any;
 
-  constructor(
-    private route: ActivatedRoute,
-    private backendApi: BackendapiService,
-    private cartService: CartService
-  ) { }
+  constructor(private route: ActivatedRoute, private backendApi: BackendapiService, private cartService: CartService) { }
 
   ngOnInit(): void {
     const productId = this.route.snapshot.paramMap.get('id');

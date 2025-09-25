@@ -21,11 +21,7 @@ export class Login {
   isLoginLoading = false;
 
 
-  constructor(
-    private api: BackendapiService,
-    private router: Router,
-    private auth: AuthService
-  ) { }
+  constructor(private api: BackendapiService, private router: Router, private auth: AuthService) { }
 
   onLogin() {
     if (!this.username || !this.password) {
@@ -40,8 +36,8 @@ export class Login {
         this.isLoading = false;
 
         if (res.success) {
-          const user = res.data;       // get the user object from data
-          const token = res.data.token || ''; // if your API has a token
+          const user = res.data;
+          const token = res.data.token || '';
           console.log('User to set in AuthService:', user, token);
           this.auth.setUser(user, token);
           this.router.navigate(['/cart']);

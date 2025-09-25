@@ -30,15 +30,12 @@ export class Shop implements OnInit {
     });
   }
 
-
   OnRegistration() {
     this.router.navigate(['/registration']);
   }
 
   onBook(product: any) {
     this.cartService.addToCart(product);
-
-    // ✅ show popup instead of navigation
     const toast = document.createElement('div');
     toast.innerText = "✅ Product added to cart!";
     toast.className = "fixed top-20 right-5 bg-green-600 text-white px-4 py-2 rounded shadow-lg";
@@ -47,7 +44,6 @@ export class Shop implements OnInit {
     setTimeout(() => toast.remove(), 2000);
   }
 
-
   onProductDetails(product: any) {
     if (!product || !product.product_id) {
       console.error("Product id missing:", product);
@@ -55,6 +51,5 @@ export class Shop implements OnInit {
     }
     this.router.navigate(['/product-details', product.product_id]);
   }
-
 
 }

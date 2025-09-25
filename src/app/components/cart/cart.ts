@@ -124,7 +124,6 @@ export class Cart implements OnInit {
       }))
     };
 
-    // Save totals separately for checkout page
     localStorage.setItem('checkoutTotals', JSON.stringify({
       subtotal: this.subtotal,
       shipping: this.shippingCost,
@@ -150,7 +149,6 @@ export class Cart implements OnInit {
       }
     });
   }
-
 
   OnShop() {
     this.router.navigate(['/shop']);

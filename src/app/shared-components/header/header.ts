@@ -18,23 +18,15 @@ export class Header implements OnInit {
   cartCount = 0;
   mobileMenuOpen = false;
 
-  user$: Observable<any | null>; // Observable from AuthService
+  user$: Observable<any | null>;
 
-  constructor(
-    private router: Router,
-    private cartService: CartService,
-    private auth: AuthService
-  ) {
-    this.user$ = this.auth.user$; // reactive user observable
+  constructor(private router: Router, private cartService: CartService, private auth: AuthService) {
+    this.user$ = this.auth.user$;
   }
 
   ngOnInit() {
     this.isHomePage = this.router.url === '/';
-
-    // Update cart count dynamically
     this.cartService.cart$.subscribe(items => this.cartCount = items.length);
-
-    // Optional: log user for debugging
     this.user$.subscribe(u => console.log('Header user$', u));
   }
 
@@ -52,7 +44,6 @@ export class Header implements OnInit {
     this.isScrolled = window.scrollY > 50;
   }
 
-  // Navigation methods
   onContact() { this.router.navigate(['/contact']); }
   onTermsOfService() { this.router.navigate(['/terms-of-service']); }
   onReturnsPolicy() { this.router.navigate(['/returns-policy']); }
