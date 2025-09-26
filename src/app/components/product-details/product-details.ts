@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Header } from "../../shared-components/header/header";
 import { Footer } from "../../shared-components/footer/footer";
 import { BackendapiService } from '../../services/backendapi.service/backendapi.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../services/cart.service/cart.service';
 
@@ -15,7 +15,7 @@ import { CartService } from '../../services/cart.service/cart.service';
 export class ProductDetails {
   product: any;
 
-  constructor(private route: ActivatedRoute, private backendApi: BackendapiService, private cartService: CartService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private backendApi: BackendapiService, private cartService: CartService) { }
 
   ngOnInit(): void {
     const productId = this.route.snapshot.paramMap.get('id');
@@ -35,6 +35,10 @@ export class ProductDetails {
   addToCart() {
     if (!this.product) return;
     this.cartService.addToCart(this.product, 1);
+  }
+
+  onCart() {
+    this.router.navigate(['/cart'])
   }
 
 }
