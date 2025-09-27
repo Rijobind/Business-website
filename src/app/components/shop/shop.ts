@@ -15,6 +15,8 @@ import { CartService } from '../../services/cart.service/cart.service';
 export class Shop implements OnInit {
 
   products: any[] = [];
+  signalRService: any;
+  ngZone: any;
 
   constructor(private router: Router, private backendApi: BackendapiService, private cartService: CartService) { }
 
@@ -28,6 +30,20 @@ export class Shop implements OnInit {
         console.error("Error fetching product list", err);
       }
     });
+
+    this.signalRService.startConnection()
+      .then(() => {
+        this.signalRService.onProductListUpdate(() => {
+          this.ngZone.run(() => {
+            this._getListOfProducts();
+          });
+        });
+      })
+    this._getListOfProducts();
+  }
+
+  private _getListOfProducts() {
+    throw new Error('Method not implemented.');
   }
 
   OnRegistration() {
