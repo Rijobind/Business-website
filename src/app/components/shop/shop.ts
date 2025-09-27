@@ -15,35 +15,47 @@ import { CartService } from '../../services/cart.service/cart.service';
 export class Shop implements OnInit {
 
   products: any[] = [];
+  loading: boolean = true;   // ✅ loading flag
   signalRService: any;
   ngZone: any;
 
-  constructor(private router: Router, private backendApi: BackendapiService, private cartService: CartService) { }
+  constructor(
+    private router: Router,
+    private backendApi: BackendapiService,
+    private cartService: CartService
+  ) { }
 
   ngOnInit(): void {
+    this.loading = true;
+
     this.backendApi.getProductList().subscribe({
       next: (res) => {
         this.products = res.data;
         console.log("Products loaded:", this.products);
+        this.loading = false;
       },
       error: (err) => {
         console.error("Error fetching product list", err);
+        this.loading = false;
       }
     });
 
-    this.signalRService.startConnection()
-      .then(() => {
-        this.signalRService.onProductListUpdate(() => {
-          this.ngZone.run(() => {
-            this._getListOfProducts();
+    if (this.signalRService) {
+      this.signalRService.startConnection()
+        .then(() => {
+          this.signalRService.onProductListUpdate(() => {
+            this.ngZone.run(() => {
+              this._getListOfProducts();
+            });
           });
         });
-      })
+    }
+
     this._getListOfProducts();
   }
 
   private _getListOfProducts() {
-    throw new Error('Method not implemented.');
+    // ❌ Placeholder (implement later)
   }
 
   OnRegistration() {
