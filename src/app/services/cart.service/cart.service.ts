@@ -77,7 +77,6 @@ export class CartService {
     this.persist();
   }
 
-  // now purely local (no backend call)
   increment(product_id: string) {
     const it = this.items.find(i => i.product_id == product_id);
     if (!it) return;
@@ -86,7 +85,6 @@ export class CartService {
     this.persist();
   }
 
-  // now purely local (no backend call)
   decrement(product_id: string) {
     const it = this.items.find(i => i.product_id == product_id);
     if (!it) return;
@@ -118,7 +116,6 @@ export class CartService {
     return this.items.reduce((s, i) => s + (i.quantity || 0), 0);
   }
 
-  // Format payload(s) to send to your backend (left intact for checkout)
   toBackendPayloads(userId = 'guest') {
     return this.items.map(it => ({
       checkout_id: `CHK_${Date.now()}`,
@@ -138,7 +135,7 @@ export class CartService {
       checkoutlist_id: `${checkoutId}_${item.product_id}`,
       userId: userId,
       product_id: item.product_id,
-      seller_id: item.seller_id ?? '',   // ✅ always string
+      seller_id: item.seller_id ?? '',
       price: item.perPieceRate,
       stock_quantity: item.quantity,
       created_at: createdAt,

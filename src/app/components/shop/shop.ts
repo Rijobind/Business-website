@@ -15,7 +15,7 @@ import { CartService } from '../../services/cart.service/cart.service';
 export class Shop implements OnInit {
 
   products: any[] = [];
-  loading: boolean = true;   // ✅ loading flag
+  loading: boolean = true;
   signalRService: any;
   ngZone: any;
 

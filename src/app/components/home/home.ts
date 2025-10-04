@@ -16,7 +16,7 @@ import { BackendapiService } from '../../services/backendapi.service/backendapi.
 export class Home implements OnInit {
 
   products: any[] = [];
-  loading: boolean = true;   // <-- added for skeleton
+  loading: boolean = true;
 
   constructor(
     private router: Router,
@@ -28,16 +28,16 @@ export class Home implements OnInit {
   }
 
   loadProducts() {
-    this.loading = true; // start skeleton
+    this.loading = true;
     this.apiService.getProduct().subscribe({
       next: (res: any) => {
         console.log('API response:', res);
         this.products = res?.data || [];
-        this.loading = false; // stop skeleton
+        this.loading = false;
       },
       error: (err) => {
         console.error('Error fetching products', err);
-        this.loading = false; // stop skeleton even on error
+        this.loading = false;
       }
     });
   }
