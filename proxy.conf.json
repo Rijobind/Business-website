@@ -1,6 +1,6 @@
 {
     "/api": {
-        "target": "http://216.183.222.46:8081",
+        "target": "https://apioonsoft.keesaexpress.com/",
         "secure": false,
         "changeOrigin": true,
         "logLevel": "debug",
