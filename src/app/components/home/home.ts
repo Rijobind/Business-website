@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Header } from "../../shared-components/header/header";
 import { AnimateOnScrollDirective } from '../../animate-on-scroll.directive';
 import { Contact } from "../../shared-components/contact/contact";
@@ -13,23 +13,32 @@ import { BackendapiService } from '../../services/backendapi.service/backendapi.
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
-export class Home {
+export class Home implements OnInit {
 
   products: any[] = [];
+  loading: boolean = true;   // <-- added for skeleton
 
-  constructor(private router: Router, private apiService: BackendapiService) { }
+  constructor(
+    private router: Router,
+    private apiService: BackendapiService
+  ) { }
 
   ngOnInit(): void {
     this.loadProducts();
   }
 
   loadProducts() {
+    this.loading = true; // start skeleton
     this.apiService.getProduct().subscribe({
       next: (res: any) => {
         console.log('API response:', res);
         this.products = res?.data || [];
+        this.loading = false; // stop skeleton
       },
-      error: (err) => console.error('Error fetching products', err)
+      error: (err) => {
+        console.error('Error fetching products', err);
+        this.loading = false; // stop skeleton even on error
+      }
     });
   }
 
