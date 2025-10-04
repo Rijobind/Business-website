@@ -40,11 +40,9 @@ export class CheckoutSuccess implements OnInit {
         if (res.success && res.data.length > 0) {
           this.checkoutData = res.data[0];
           this.checkoutItems = this.checkoutData.im_Checkoutlists;
-          console.log('Checkout Items:', this.checkoutItems);
         }
       },
       error: (err) => {
-        console.error('Error fetching checkout by ID', err);
       }
     });
   }

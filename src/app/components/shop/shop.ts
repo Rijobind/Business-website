@@ -31,11 +31,9 @@ export class Shop implements OnInit {
     this.backendApi.getProductList().subscribe({
       next: (res) => {
         this.products = res.data;
-        console.log("Products loaded:", this.products);
         this.loading = false;
       },
       error: (err) => {
-        console.error("Error fetching product list", err);
         this.loading = false;
       }
     });
@@ -74,7 +72,6 @@ export class Shop implements OnInit {
 
   onProductDetails(product: any) {
     if (!product || !product.product_id) {
-      console.error("Product id missing:", product);
       return;
     }
     this.router.navigate(['/product-details', product.product_id]);

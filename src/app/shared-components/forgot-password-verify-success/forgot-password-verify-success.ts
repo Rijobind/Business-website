@@ -33,7 +33,6 @@ export class ForgotPasswordVerifySuccess {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      console.log("Query Params on load:", params);
       this.token = params['token'];
       this.email = params['email'];
 
@@ -54,7 +53,6 @@ export class ForgotPasswordVerifySuccess {
         this.isLoading = false;
         const msg = res.message?.trim() || '';
         this.message = msg;
-        console.log("Backend response:", res);
 
         const messageMap: Record<string, { color: string, label?: string, action?: () => void }> = {
           'email verified successfully': {
@@ -106,7 +104,6 @@ export class ForgotPasswordVerifySuccess {
         this.message = 'Something went wrong. Please try again.';
         this.showButton = false;
         this.messageColor = 'text-red-500';
-        console.error("Verify error:", err);
       }
     });
   }

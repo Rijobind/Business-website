@@ -61,7 +61,6 @@ export class ResetPassword implements OnInit {
         this.isLoading = false;
         this.tokenValid = false;
         this.message = "Something went wrong while verifying the token.";
-        console.error(err);
       }
     });
   }
@@ -87,7 +86,6 @@ export class ResetPassword implements OnInit {
       error: (err) => {
         this.isLoading = false;
         this.message = err?.error || "Something went wrong!";
-        console.error(err);
       }
     });
   }

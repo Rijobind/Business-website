@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CartItem, CartService } from '../../services/cart.service/cart.service';
 import { BackendapiService } from '../../services/backendapi.service/backendapi.service';
+import { environment } from '../../environment/environment/environment';
 
 @Component({
   selector: 'app-cart',
@@ -16,6 +17,7 @@ import { BackendapiService } from '../../services/backendapi.service/backendapi.
   styleUrls: ['./cart.css']
 })
 export class Cart implements OnInit {
+  imageURl = environment.image;
   cartItems: CartItem[] = [];
   shippingCost = 5;
   loadingCheckout = false;
@@ -130,8 +132,6 @@ export class Cart implements OnInit {
       total: this.total
     }));
 
-    console.log("post checkout : ", payload)
-
     this.backendApi.postCheckout(payload).subscribe({
       next: () => {
         this.cartService.clearCart();
@@ -144,7 +144,6 @@ export class Cart implements OnInit {
         });
       },
       error: (err) => {
-        console.error('Checkout failed', err);
         this.loadingCheckout = false;
       }
     });

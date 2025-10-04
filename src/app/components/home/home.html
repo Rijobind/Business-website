@@ -281,7 +281,7 @@
                 <div *ngFor="let product of products"
                     class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 hover:scale-105 animate-fade-in">
                     <a>
-                        <img [src]="product?.image_url ? 'http://216.183.222.46:8081/' + product.image_url : 'assets/placeholder.jpg'"
+                        <img [src]="product?.image_url ? 'https://apioonsoft.keesaexpress.com/' + product.image_url : 'assets/placeholder.jpg'"
                             [alt]="product?.title" class="w-full object-cover" />
                     </a>
                     <div class="p-5 text-center">

@@ -80,7 +80,6 @@ export class Registration implements OnInit {
       },
       error: (err) => {
         this.isLoading = false;
-        console.error('Registration failed:', err);
         alert('Something went wrong. Please try again.');
       }
     });

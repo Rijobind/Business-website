@@ -58,7 +58,6 @@ export class BackendapiService {
   }
 
   postRegistration(payload: RegistrationPayload): Observable<any> {
-    console.log("Posting to:", `${this.apiUrl}/customer/create_customer`);
     return this.http.post(`${this.apiUrl}/customer/create_customer`, payload);
   }
 

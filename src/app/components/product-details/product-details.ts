@@ -23,10 +23,8 @@ export class ProductDetails {
       this.backendApi.getProductById(productId).subscribe({
         next: (res) => {
           this.product = res.data;
-          console.log("Product details:", this.product);
         },
         error: (err) => {
-          console.error("Error fetching product details", err);
         }
       });
     }

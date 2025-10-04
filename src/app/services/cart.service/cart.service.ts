@@ -38,7 +38,6 @@ export class CartService {
   addToCart(product: any, qty = 1) {
     const id = product.product_id ?? product.id ?? product.productId ?? product.sku;
     if (!id) {
-      console.warn('Product without id:', product);
       return;
     }
 
@@ -57,9 +56,7 @@ export class CartService {
         quantity: qty,
         perPieceRate,
         totalPrice: Number((perPieceRate * qty).toFixed(2)),
-        image: product.im_ProductImages?.length
-          ? `http://216.183.222.46:8081/${product.im_ProductImages[0].image_url}`
-          : product.image ?? '',
+        image: product?.im_ProductImages[0]?.image_url,
         seller_id: product.seller_id ?? ''
       };
       this.items.push(item);

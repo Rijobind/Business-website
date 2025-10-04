@@ -35,7 +35,7 @@
                     class="bg-white shadow-lg rounded-xl overflow-hidden flex flex-col">
                     <div class="relative flex items-center justify-center h-56 bg-gray-50">
                         <img *ngIf="product.im_ProductImages?.length"
-                            [src]="'http://216.183.222.46:8081/' + product.im_ProductImages[0].image_url"
+                            [src]="'https://apioonsoft.keesaexpress.com/' + product.im_ProductImages[0].image_url"
                             alt="{{ product.brand }}"
                             class="w-40 h-40 transition transform hover:scale-105 duration-300 object-contain">
                         <div class="absolute top-4 right-4 text-white text-xs font-semibold px-3 py-1 rounded-full shadow"

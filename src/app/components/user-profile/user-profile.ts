@@ -16,6 +16,5 @@ export class UserProfile {
 
   constructor(private auth: AuthService) {
     this.user$ = this.auth.user$;
-    console.log("auth", this.auth)
   }
 }

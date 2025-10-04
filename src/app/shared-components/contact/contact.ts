@@ -32,7 +32,6 @@ export class Contact implements OnInit {
 
     this.route.queryParams.subscribe(params => {
       this.productTitle = params['title'] || null;
-      console.log('Received title:', this.productTitle);
     });
   }
 
@@ -44,7 +43,6 @@ export class Contact implements OnInit {
 
     this.backendApi.postContactDetails(payload).subscribe({
       next: (res) => {
-        console.log('Success:', res);
         this.isLoading = false;
         this.contactForm.reset();
         this.showSuccess = true;
@@ -53,7 +51,6 @@ export class Contact implements OnInit {
         }, 2000);
       },
       error: (err) => {
-        console.error('Error:', err);
         this.isLoading = false;
       },
     });

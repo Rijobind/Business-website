@@ -38,7 +38,6 @@ export class Login {
         if (res.success) {
           const user = res.data;
           const token = res.data.token || '';
-          console.log('User to set in AuthService:', user, token);
           this.auth.setUser(user, token);
           this.router.navigate(['/cart']);
         }
@@ -48,13 +47,11 @@ export class Login {
       },
       error: (err) => {
         this.isLoading = false;
-        console.error("Login failed:", err);
         alert('Login failed. Please try again.');
       }
     });
     setTimeout(() => {
       this.isLoginLoading = false;
-      console.log("User logged in!");
     }, 2000);
   }
 

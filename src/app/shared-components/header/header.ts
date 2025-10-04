@@ -27,7 +27,6 @@ export class Header implements OnInit {
   ngOnInit() {
     this.isHomePage = this.router.url === '/';
     this.cartService.cart$.subscribe(items => this.cartCount = items.length);
-    this.user$.subscribe(u => console.log('Header user$', u));
   }
 
   onLogout() {

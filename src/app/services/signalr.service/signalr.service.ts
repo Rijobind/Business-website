@@ -17,23 +17,19 @@ export class SignalRService {
     return this.hubConnection
       .start()
       .then(() => {
-        console.log('✅ SignalR Connected');
       })
       .catch(err => {
-        console.error('❌ SignalR Error: ', err);
       });
   }
 
   public onProductListUpdate(callback: () => void): void {
     this.hubConnection.on('ReceiveProductListUpdate', () => {
-      console.log("🔔 Product list updated");
       callback();
     });
   }
 
   public onSingleProductUpdate(callback: (productId: string) => void): void {
     this.hubConnection.on('UpdatedProduct', (productId: string) => {
-      console.log("🔔 Product updated:", productId);
       callback(productId);
     });
   }

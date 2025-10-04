@@ -31,12 +31,10 @@ export class Home implements OnInit {
     this.loading = true;
     this.apiService.getProduct().subscribe({
       next: (res: any) => {
-        console.log('API response:', res);
         this.products = res?.data || [];
         this.loading = false;
       },
       error: (err) => {
-        console.error('Error fetching products', err);
         this.loading = false;
       }
     });
