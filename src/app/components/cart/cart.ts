@@ -23,6 +23,10 @@ export class Cart implements OnInit {
   loadingCheckout = false;
   isLoggedIn = false;
 
+  selectedAddressId: string = '';
+  addresses: any[] = [];
+
+
   constructor(
     private cartService: CartService,
     private backendApi: BackendapiService,
@@ -35,6 +39,20 @@ export class Cart implements OnInit {
     this.cartService.cart$.subscribe(items => this.cartItems = items);
     this.authService.user$.subscribe(user => {
       this.isLoggedIn = !!user;
+      if (user) {
+        this.loadAddresses(user.id);
+      }
+    });
+  }
+
+  loadAddresses(userId: string) {
+    this.backendApi.getAddressByUserId(userId).subscribe({
+      next: (res: any) => {
+        this.addresses = res.data?.am_customer_shipping_addresses || [];
+        if (this.addresses.length > 0) {
+          this.selectedAddressId = this.addresses[0].address_id; // default to first
+        }
+      }
     });
   }
 
@@ -106,6 +124,7 @@ export class Cart implements OnInit {
       checkout_id: checkoutId,
       userId: userId,
       product_id: this.cartItems[0]?.product_id ?? '',
+      address_id: this.selectedAddressId,
       price: this.subtotal,
       stock_quantity: this.cartItems.reduce((sum, item) => sum + item.quantity, 0),
       seller_id: this.cartItems[0]?.seller_id ?? '',
@@ -118,7 +137,7 @@ export class Cart implements OnInit {
         price: item.perPieceRate,
         stock_quantity: item.quantity,
         created_at: createdAt,
-        address: '',
+        address: this.selectedAddressId,
         digital_key: '',
         url: '',
         isdigital: 'F',

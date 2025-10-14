@@ -1,10 +1,10 @@
 <app-header></app-header>
 <section id="hero"
     class="relative bg-gray-900 text-white transform transition-all duration-300 hover:scale-[1.01] animate-fade-in">
-    <div class="absolute inset-0 ">
+    <div class="absolute inset-0 overflow-hidden">
         <img src="assets/homeBg-2.png" alt="OON SOFT LLC"
-            class="w-full h-full object-cover opacity-0 transition-opacity duration-700" loading="eager"
-            onload="this.style.opacity=1" />
+            class="w-full h-full object-cover transform scale-105 opacity-0 transition-all duration-[1500ms] ease-out"
+            loading="eager" onload="this.style.opacity=1; this.style.transform='scale(1)';" />
         <div class="absolute inset-0 bg-gradient-to-r from-gray-900/90 via-gray-900/60 to-transparent"></div>
     </div>
     <div class="relative z-10 flex items-center min-h-[110vh]">
@@ -43,7 +43,7 @@
                             <i class="bi bi-rocket-takeoff-fill"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl font-semibold mb-2">Innovation First</h3>
+                            <h2 class="text-xl font-semibold mb-2">Innovation First</h2>
                             <p class="text-gray-300 text-sm">We stay ahead of digital trends with future-ready
                                 solutions.</p>
                         </div>
@@ -54,7 +54,7 @@
                             <i class="bi bi-shield-check"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl font-semibold mb-2">Integrity & Trust</h3>
+                            <h2 class="text-xl font-semibold mb-2">Integrity & Trust</h2>
                             <p class="text-gray-300 text-sm">We work transparently with ethics and client respect.</p>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
                             <i class="bi bi-people-fill"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl font-semibold mb-2">Customer-Centric</h3>
+                            <h2 class="text-xl font-semibold mb-2">Customer-Centric</h2>
                             <p class="text-gray-300 text-sm">Your success is our success. We listen and deliver impact.
                             </p>
                         </div>
@@ -91,75 +91,86 @@
     </svg>
 </section>
 
-<section class="py-16 max-w-6xl mx-auto px-4 bg-white">
-    <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div appAnimateOnScroll="animate__fadeInLeft" class="animate__delay-1s relative">
-            <p class="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">
+<section class="py-20 bg-white relative overflow-hidden">
+    <!-- Background Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-blue-100 opacity-60"></div>
+
+    <div class="relative max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <!-- Left Content -->
+        <div appAnimateOnScroll="animate__fadeInUp" class="animate__animated animate__delay-1s space-y-6">
+            <p class="text-sm font-semibold text-blue-600 uppercase tracking-wider">
                 A Bit About OON SOFT LLC
             </p>
-            <h2 class="text-4xl font-bold text-gray-900 mb-6 leading-snug">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 leading-snug">
                 Driving Business Growth Through Digital Innovation
             </h2>
-            <p class="text-gray-600 mb-6">
+            <p class="text-gray-600 leading-relaxed">
                 OON SOFT LLC is a technology company dedicated to helping
                 businesses grow through digital innovation. We specialize in social media
                 content creation and consultation, providing strategies and content to
                 strengthen online presence.
             </p>
-            <p class="text-gray-600 mb-8">
+            <p class="text-gray-600 leading-relaxed">
                 Our Point of Sale (POS) software, offered under a subscription model,
                 streamlines operations and sales for businesses. Additionally, we provide
                 IT products and solutions designed to support organizations of all sizes.
                 Our mission is to deliver innovation, reliability, and simplicity to
                 businesses worldwide.
             </p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 text-gray-800">
-                <div class="flex items-center space-x-2">
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 mt-6">
+                <div class="flex items-center space-x-2" appAnimateOnScroll="animate__fadeInLeft">
                     <span class="text-blue-500 text-lg">✔</span>
-                    <span>Social Media Strategy & Content</span>
+                    <p class="text-gray-800 font-medium">Social Media Strategy & Content</p>
                 </div>
-                <div class="flex items-center space-x-2">
+                <div class="flex items-center space-x-2" appAnimateOnScroll="animate__fadeInRight">
                     <span class="text-blue-500 text-lg">✔</span>
-                    <span>POS Software Solutions</span>
+                    <p class="text-gray-800 font-medium">POS Software Solutions</p>
                 </div>
-                <div class="flex items-center space-x-2">
+                <div class="flex items-center space-x-2" appAnimateOnScroll="animate__fadeInLeft">
                     <span class="text-blue-500 text-lg">✔</span>
-                    <span>IT Products & Services</span>
+                    <p class="text-gray-800 font-medium">IT Products & Services</p>
                 </div>
-                <div class="flex items-center space-x-2">
+                <div class="flex items-center space-x-2" appAnimateOnScroll="animate__fadeInRight">
                     <span class="text-blue-500 text-lg">✔</span>
-                    <span>Business Consultation</span>
+                    <p class="text-gray-800 font-medium">Business Consultation</p>
                 </div>
-                <div class="flex items-center space-x-2">
+                <div class="flex items-center space-x-2" appAnimateOnScroll="animate__fadeInLeft">
                     <span class="text-blue-500 text-lg">✔</span>
-                    <span>Reliable & Scalable Solutions</span>
+                    <p class="text-gray-800 font-medium">Reliable & Scalable Solutions</p>
                 </div>
-                <div class="flex items-center space-x-2">
+                <div class="flex items-center space-x-2" appAnimateOnScroll="animate__fadeInRight">
                     <span class="text-blue-500 text-lg">✔</span>
-                    <span>Global Reach & Support</span>
+                    <p class="text-gray-800 font-medium">Global Reach & Support</p>
                 </div>
             </div>
         </div>
-        <div class="relative animate__animated">
-            <img src="assets/about.jpg" alt="about us " loading="eager" onload="this.style.opacity=1"
-                class="rounded-lg shadow-lg object-cover opacity-0 transition-opacity duration-700 w-full h-full  transform group-hover:scale-110 ease-out">
-            <div appAnimateOnScroll="animate__fadeInRight"
-                class="animate__delay-1s absolute bottom-6 left-6 bg-gray-900 text-white p-6 rounded-md max-w-xs sm:max-w-sm shadow-lg">
-                <h3 class="text-lg font-semibold mb-3">
-                    Need Expert Guidance?
-                </h3>
-                <p class="text-gray-300 text-sm mb-4">
+
+        <!-- Right Image with Floating Card -->
+        <div class="relative group" appAnimateOnScroll="animate__zoomIn">
+            <div
+                class="relative overflow-hidden rounded-2xl shadow-2xl transform transition-transform duration-700 group-hover:scale-105">
+                <img src="assets/about.jpg" alt="About OON SOFT LLC"
+                    class="w-full h-full object-cover rounded-2xl transition-all duration-700 ease-out group-hover:scale-110" />
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent"></div>
+            </div>
+
+            <div appAnimateOnScroll="animate__fadeInUp"
+                class="absolute bottom-6 left-6 bg-white/90 backdrop-blur-sm text-gray-900 p-6 rounded-xl shadow-xl border border-gray-100 max-w-xs sm:max-w-sm">
+                <h3 class="text-lg font-semibold mb-2">Need Expert Guidance?</h3>
+                <p class="text-gray-700 text-sm mb-4">
                     Get a consultation with our team and discover how OON SOFT LLC can
                     transform your business.
                 </p>
                 <button (click)="OnContact()"
-                    class="px-5 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-blue-400 text-white text-sm font-semibold uppercase shadow-md hover:shadow-lg hover:scale-105 transition">
+                    class="px-5 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-blue-400 text-white text-sm font-semibold uppercase shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300">
                     Get Started →
                 </button>
             </div>
         </div>
     </div>
 </section>
+
 
 <section id="commitments" class="relative py-12 bg-gray-50">
     <div class="text-center mb-12">

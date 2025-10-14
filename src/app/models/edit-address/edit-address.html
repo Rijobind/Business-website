@@ -1,0 +1,142 @@
+<div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+    <div class="bg-white rounded-lg shadow-lg w-full max-w-2xl p-6 relative">
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">Edit Address</h3>
+
+        <form #editForm="ngForm" (ngSubmit)="updateAddress(editForm)">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Email -->
+                <div>
+                    <label class="block text-gray-700 text-sm font-semibold mb-2">Email</label>
+                    <div class="flex items-center border rounded-lg bg-gray-100">
+                        <span class="px-3 text-gray-500"><i class="fas fa-envelope"></i></span>
+                        <input type="email" readonly [(ngModel)]="address.email" name="email"
+                            class="w-full bg-gray-100 py-2 px-2 text-gray-700 focus:outline-none rounded-r-lg" />
+                    </div>
+                </div>
+
+                <!-- Country -->
+                <div>
+                    <label class="block text-gray-700 text-sm font-semibold mb-2">Country</label>
+                    <div class="relative">
+                        <select [(ngModel)]="address.country" name="country" required
+                            class="block w-full appearance-none bg-white border border-gray-300 rounded-lg py-2 px-4 pr-10 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition duration-150 ease-in-out cursor-pointer">
+                            <option value="">Select Country</option>
+                            <option *ngFor="let country of countries" [value]="country.name">{{ country.name }}</option>
+                        </select>
+                        <div
+                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-400">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div *ngIf="editForm.submitted && !address.country" class="text-red-500 text-xs mt-1">
+                        Country is required
+                    </div>
+                </div>
+
+                <!-- City -->
+                <div>
+                    <label class="block text-gray-700 text-sm font-semibold mb-2">City</label>
+                    <div class="flex items-center border rounded-lg bg-gray-100">
+                        <span class="px-3 text-gray-500"><i class="fas fa-city"></i></span>
+                        <input type="text" [(ngModel)]="address.city" name="city" required
+                            class="w-full bg-gray-100 py-2 px-2 text-gray-700 focus:outline-none rounded-r-lg" />
+                    </div>
+                </div>
+
+                <!-- State -->
+                <div>
+                    <label class="block text-gray-700 text-sm font-semibold mb-2">State</label>
+                    <div class="flex items-center border rounded-lg bg-gray-100">
+                        <span class="px-3 text-gray-500"><i class="fas fa-map"></i></span>
+                        <input type="text" [(ngModel)]="address.state" name="state" required
+                            class="w-full bg-gray-100 py-2 px-2 text-gray-700 focus:outline-none rounded-r-lg" />
+                    </div>
+                </div>
+
+
+
+                <!-- Address Line 1 -->
+                <div>
+                    <label class="block text-gray-700 text-sm font-semibold mb-2">Address Line 1</label>
+                    <div class="flex items-center border rounded-lg bg-gray-100">
+                        <span class="px-3 text-gray-500"><i class="fas fa-home"></i></span>
+                        <input type="text" [(ngModel)]="address.address_1" name="address_1" required
+                            class="w-full bg-gray-100 py-2 px-2 text-gray-700 focus:outline-none rounded-r-lg" />
+                    </div>
+                </div>
+
+                <!-- Address Line 2 -->
+                <div>
+                    <label class="block text-gray-700 text-sm font-semibold mb-2">Address Line 2</label>
+                    <div class="flex items-center border rounded-lg bg-gray-100">
+                        <span class="px-3 text-gray-500"><i class="fas fa-building"></i></span>
+                        <input type="text" [(ngModel)]="address.address_2" name="address_2"
+                            class="w-full bg-gray-100 py-2 px-2 text-gray-700 focus:outline-none rounded-r-lg" />
+                    </div>
+                </div>
+
+                <!-- Postal Code -->
+                <div>
+                    <label class="block text-gray-700 text-sm font-semibold mb-2">Postal Code</label>
+                    <div class="flex items-center border rounded-lg bg-gray-100">
+                        <span class="px-3 text-gray-500"><i class="fas fa-mail-bulk"></i></span>
+                        <input type="text" [(ngModel)]="address.postalCode" name="postalCode"
+                            class="w-full bg-gray-100 py-2 px-2 text-gray-700 focus:outline-none rounded-r-lg" />
+                    </div>
+                </div>
+
+                <!-- Contact Person -->
+                <div>
+                    <label class="block text-gray-700 text-sm font-semibold mb-2">Contact Person</label>
+                    <div class="flex items-center border rounded-lg bg-gray-100">
+                        <span class="px-3 text-gray-500"><i class="fas fa-user-tie"></i></span>
+                        <input type="text" [(ngModel)]="address.contactPerson" name="contactPerson"
+                            class="w-full bg-gray-100 py-2 px-2 text-gray-700 focus:outline-none rounded-r-lg" />
+                    </div>
+                </div>
+
+                <!-- Contact Number -->
+                <div>
+                    <label class="block text-gray-700 text-sm font-semibold mb-2">Contact Number</label>
+                    <div class="flex items-center border rounded-lg bg-gray-100">
+                        <span class="px-3 text-gray-500"><i class="fas fa-phone-alt"></i></span>
+                        <input type="text" [(ngModel)]="address.contactNumber" name="contactNumber" required
+                            class="w-full bg-gray-100 py-2 px-2 text-gray-700 focus:outline-none rounded-r-lg" />
+                    </div>
+                    <div *ngIf="editForm.submitted && isContactNumberInvalid()" class="text-red-500 text-xs mt-1">
+                        Enter a valid 10-digit number
+                    </div>
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="mt-6 flex justify-end space-x-3">
+                <button type="button" (click)="closeModal()"
+                    class="px-4 py-2 text-gray-700 border border-gray-300 rounded-md hover:bg-gray-100">
+                    Cancel
+                </button>
+
+                <button type="submit"
+                    class="py-2 px-3 rounded-lg cursor-pointer bg-gradient-to-r from-yellow-600 to-yellow-400 text-white font-semibold hover:scale-105 transition transform shadow-md flex justify-center items-center space-x-2">
+                    <span *ngIf="!isSaving">Update</span>
+                    <span *ngIf="isSaving" class="flex items-center space-x-2">
+                        <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                            </circle>
+                            <path class="opacity-75" fill="currentColor"
+                                d="M4 12a8 8 0 018-8v4l3.5-3.5L12 0v4a8 8 0 100 16v-4l-3.5 3.5L12 24v-4a8 8 0 01-8-8z">
+                            </path>
+                        </svg>
+                        <span>Updating...</span>
+                    </span>
+                </button>
+            </div>
+
+            <button type="button" (click)="closeModal()"
+                class="absolute top-3 right-3 text-gray-500 hover:text-gray-700">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+        </form>
+    </div>
+</div>

@@ -53,6 +53,27 @@ export class BackendapiService {
     return this.http.get(`${this.apiUrl}/Product/productlist`);
   }
 
+  getCountryList(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/Seller/currency_list`);
+  }
+
+  postAddressByUserId(userId: string, payload: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/customer/add_address/${userId}`, payload);
+  }
+
+  getAddressByUserId(userId: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/customer/customer_list/${userId}`);
+  }
+
+  postEditedAddressByAddressId(addressId: string, payload: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/customer/update_address/${addressId}`, payload);
+  }
+
+
+  getOrderHistoryByUserId(userId: string) {
+    return this.http.get(`${this.apiUrl}/checkout/getcheckout/${userId}`);
+  }
+
   postLogin(username: string, password: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/customer/login/${username}/${password}`, {});
   }
