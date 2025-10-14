@@ -78,16 +78,16 @@ export class EditAddress implements OnInit {
       postal_code: this.address.postalCode,
       contact_person: this.address.contactPerson,
       contact_no: this.address.contactNumber,
-      address_1: this.address.address_1, // ✅ added
-      address_2: this.address.address_2  // ✅ added
+      address_1: this.address.address_1,
+      address_2: this.address.address_2
     };
 
-    console.log('Payload sent:', payload); // ✅ optional debug
+    console.log('Payload sent:', payload);
 
     this.backend.postEditedAddressByAddressId(this.addressToEdit.address_id, payload).subscribe({
       next: (res) => {
         const updated = res.data || payload;
-        console.log('Updated address:', updated); // ✅ optional debug
+        console.log('Updated address:', updated);
         this.addressUpdated.emit(updated);
         this.close.emit();
         this.isSaving = false;

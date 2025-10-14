@@ -100,13 +100,11 @@ export class UserProfile implements OnInit {
     this.loadAddress();
   }
 
-  // Add new address
   onAddressSaved(addressData: any) {
     if (addressData) this.userAddress.unshift(addressData);
     this.closeAddressModal();
   }
 
-  // Update existing address
   onAddressUpdated(updatedAddress: any) {
     const index = this.userAddress.findIndex(addr => addr.address_id === updatedAddress.address_id);
     if (index !== -1) this.userAddress[index] = updatedAddress;
