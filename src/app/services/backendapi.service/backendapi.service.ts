@@ -134,4 +134,9 @@ export class BackendapiService {
     );
   }
 
+
+  completeCheckout(payload: any) {
+    return this.http.post(`${this.apiUrl}Seller/add_invoice`, payload);
+  }
+
 }

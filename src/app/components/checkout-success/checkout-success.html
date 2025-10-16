@@ -1,111 +1,103 @@
 <app-header></app-header>
 
 <section
-    class="relative bg-gradient-to-br from-indigo-100 via-white to-indigo-50 py-28 min-h-screen flex items-center justify-center">
-    <div
-        class="w-full max-w-md bg-white/80 backdrop-blur-lg border border-gray-200 rounded-3xl shadow-2xl p-8 transform transition-all duration-300 hover:scale-[1.01] animate-fade-in">
-        <div class="text-center">
-            <h2 class="text-3xl font-extrabold text-gray-800">Checkout</h2>
-            <p class="text-gray-500 mt-1">Complete your purchase securely</p>
-        </div>
-        <div *ngFor="let item of checkoutItems" class="flex items-center space-x-5 mt-6">
-            <img [src]="item?.image_url ? 'http://216.183.222.46:8081/' + item.image_url : 'assets/placeholder.jpg'"
-                [alt]="item?.title" class="w-24 h-24 rounded-2xl shadow-lg border border-gray-200 object-contain" />
-            <div>
-                <h3 class="font-semibold text-gray-800">{{ item.title }}</h3>
-                <p class="text-sm text-gray-600">Quantity: {{ item.stock_quantity }}</p>
-                <p class="text-sm text-gray-600">Price: ${{ item.price }}</p>
-            </div>
-        </div>
-        <div class="mt-8 space-y-4">
-            <div class="flex justify-between text-gray-600">
-                <span>Subtotal</span>
-                <span class="font-medium">${{ subtotal.toFixed(2) }}</span>
-            </div>
-            <div class="flex justify-between text-gray-600">
-                <span>Shipping</span>
-                <span class="text-green-600 font-medium">${{ shipping.toFixed(2) }}</span>
-            </div>
-            <div class="flex justify-between font-bold text-gray-900 text-lg border-t pt-3">
-                <span>Total</span>
-                <span>${{ total.toFixed(2) }}</span>
-            </div>
-        </div>
-        <!-- <div class="mt-8">
-            <label class="block text-gray-700 mb-3">Shipping Address</label>
-            <select [(ngModel)]="selectedAddressId" (change)="onAddressChange()" [disabled]="addresses.length === 0"
-                class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition bg-gray-100">
-                <option *ngFor="let addr of addresses" [value]="addr.address_id">
-                    {{ addr.address }}
-                </option>
-                <option *ngIf="addresses.length === 0" disabled>No addresses available</option>
-            </select>
-            <div *ngIf="addresses.length === 0" class="mt-2 mx-1 text-sm">
-                <p class="text-red-600 my-2">You need to add your address first. <span (click)="onUserProfile()"
-                        class="text-indigo-600 hover:underline cursor-pointer font-semibold ml-2"> Go to User
-                        Profile</span>
-                </p>
-            </div>
-        </div> -->
+  class="relative bg-gradient-to-br from-indigo-100 via-white to-indigo-50 py-28 min-h-screen flex items-center justify-center">
+  <div
+    class="w-full max-w-md bg-white/80 backdrop-blur-lg border border-gray-200 rounded-3xl shadow-2xl p-8 transform transition-all duration-300 hover:scale-[1.01] animate-fade-in">
 
-        <div class="mt-8">
-            <label class="block text-gray-700 mb-3">Shipping Address</label>
-            <select [(ngModel)]="selectedAddressId" (change)="onAddressChange()" [disabled]="addresses.length === 0"
-                class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition bg-gray-100">
-                <option *ngFor="let addr of addresses" [value]="addr.address_id">
-                    {{ addr.address_1 }}, {{ addr.address_2 }}
-                </option>
-                <option *ngIf="addresses.length === 0" disabled>No addresses available</option>
-            </select>
-
-            <div *ngIf="addresses.length === 0" class="mt-2 mx-1 text-sm">
-                <p class="text-red-600 my-2">
-                    You need to add your address first.
-                    <span (click)="onUserProfile()"
-                        class="text-indigo-600 hover:underline cursor-pointer font-semibold ml-2">Go to User
-                        Profile</span>
-                </p>
-            </div>
-
-            <!-- Selected Address Details -->
-            <div *ngIf="selectedAddress" class="mt-4 p-4 bg-white border border-gray-200 rounded-xl shadow-sm">
-                <p class="text-gray-700 font-semibold">{{ selectedAddress.address_Name || 'Address' }}</p>
-                <p class="text-gray-600">{{ selectedAddress.address_1 }}, {{ selectedAddress.address_2 }}</p>
-                <p class="text-gray-500">{{ selectedAddress.city }}, {{ selectedAddress.state }} - {{
-                    selectedAddress.postal_code }}, {{ selectedAddress.country }}</p>
-                <p class="text-gray-500">Contact: {{ selectedAddress.contact_person }} | {{ selectedAddress.contact_no
-                    }}</p>
-            </div>
-        </div>
-
-
-        <div class="mt-8">
-            <label class="block text-gray-700 font-semibold mb-3">Payment Method</label>
-            <div class="flex items-center gap-4">
-                <button (click)="selectPayment('stripe')"
-                    [ngClass]="selectedPayment === 'stripe' ? 'ring-2 ring-indigo-500 bg-indigo-50' : ''"
-                    class="flex-1 bg-gray-100 hover:bg-indigo-100 transition p-3 rounded-xl border border-gray-200 shadow-sm hover:shadow-md">
-                    <img src="/assets/Stripe.png" alt="Stripe" class="h-6 mx-auto" />
-                </button>
-
-                <button (click)="selectPayment('paypal')"
-                    [ngClass]="selectedPayment === 'paypal' ? 'ring-2 ring-indigo-500 bg-indigo-50' : ''"
-                    class="flex-1 bg-gray-100 hover:bg-indigo-100 transition p-3 rounded-xl border border-gray-200 shadow-sm hover:shadow-md">
-                    <img src="/assets/PayPal.png" alt="PayPal" class="h-6 mx-auto" />
-                </button>
-            </div>
-        </div>
-        <button (click)="completePurchase()"
-            class="mt-8 w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition duration-300 flex items-center justify-center gap-2">
-            <span>Complete Purchase</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-        </button>
-        <p class="text-center text-gray-500 text-sm mt-5">
-            🔒 Secure Payment. Your information is encrypted.
-        </p>
+    <div class="text-center">
+      <h2 class="text-3xl font-extrabold text-gray-800">Checkout</h2>
+      <p class="text-gray-500 mt-1">Complete your purchase securely</p>
     </div>
+
+    <div *ngFor="let item of checkoutItems" class="flex items-center space-x-5 mt-6">
+      <img [src]="item?.image_url ? 'http://216.183.222.46:8081/' + item.image_url : 'assets/placeholder.jpg'"
+        [alt]="item?.title" class="w-24 h-24 rounded-2xl shadow-lg border border-gray-200 object-contain" />
+      <div>
+        <h3 class="font-semibold text-gray-800">{{ item.title }}</h3>
+        <p class="text-sm text-gray-600">Quantity: {{ item.stock_quantity }}</p>
+        <p class="text-sm text-gray-600">Price: ${{ item.price }}</p>
+      </div>
+    </div>
+
+    <div class="mt-8 space-y-4">
+      <div class="flex justify-between text-gray-600">
+        <span>Subtotal</span>
+        <span class="font-medium">${{ subtotal.toFixed(2) }}</span>
+      </div>
+      <div class="flex justify-between text-gray-600">
+        <span>Shipping</span>
+        <span class="text-green-600 font-medium">${{ shipping.toFixed(2) }}</span>
+      </div>
+      <div class="flex justify-between font-bold text-gray-900 text-lg border-t pt-3">
+        <span>Total</span>
+        <span>${{ total.toFixed(2) }}</span>
+      </div>
+    </div>
+
+    <div class="mt-8">
+      <label class="block text-gray-700 mb-3">Shipping Address</label>
+      <select [(ngModel)]="selectedAddressId" (change)="onAddressChange()" [disabled]="addresses.length === 0"
+        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition bg-gray-100">
+        <option *ngFor="let addr of addresses" [value]="addr.address_id">
+          {{ addr.address_1 }}, {{ addr.address_2 }}
+        </option>
+        <option *ngIf="addresses.length === 0" disabled>No addresses available</option>
+      </select>
+
+      <div *ngIf="addresses.length === 0" class="mt-2 mx-1 text-sm">
+        <p class="text-red-600 my-2">
+          You need to add your address first.
+          <span (click)="onUserProfile()" class="text-indigo-600 hover:underline cursor-pointer font-semibold ml-2">
+            Go to User Profile
+          </span>
+        </p>
+      </div>
+
+      <div *ngIf="selectedAddress" class="mt-4 p-4 bg-white border border-gray-200 rounded-xl shadow-sm">
+        <p class="text-gray-700 font-semibold">{{ selectedAddress.address_Name || 'Address' }}</p>
+        <p class="text-gray-600">{{ selectedAddress.address_1 }}, {{ selectedAddress.address_2 }}</p>
+        <p class="text-gray-500">{{ selectedAddress.city }}, {{ selectedAddress.state }} -
+          {{ selectedAddress.postal_code }}, {{ selectedAddress.country }}</p>
+        <p class="text-gray-500">
+          Contact: {{ selectedAddress.contact_person }} | {{ selectedAddress.contact_no }}
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-8">
+      <label class="block text-gray-700 font-semibold mb-3">Payment Method</label>
+      <div class="flex items-center gap-4">
+        <button (click)="selectPayment('stripe')"
+          [ngClass]="selectedPayment === 'stripe' ? 'ring-2 ring-indigo-500 bg-indigo-50' : ''"
+          class="flex-1 bg-gray-100 hover:bg-indigo-100 transition p-3 rounded-xl border border-gray-200 shadow-sm hover:shadow-md">
+          <img src="/assets/Stripe.png" alt="Stripe" class="h-6 mx-auto" />
+        </button>
+
+        <button (click)="selectPayment('paypal')"
+          [ngClass]="selectedPayment === 'paypal' ? 'ring-2 ring-indigo-500 bg-indigo-50' : ''"
+          class="flex-1 bg-gray-100 hover:bg-indigo-100 transition p-3 rounded-xl border border-gray-200 shadow-sm hover:shadow-md">
+          <img src="/assets/PayPal.png" alt="PayPal" class="h-6 mx-auto" />
+        </button>
+      </div>
+
+      <div *ngIf="selectedPayment === 'paypal'" #paypalContainer class="mt-6"></div>
+
+    </div>
+
+    <button (click)="completePurchase()" *ngIf="selectedPayment !== 'paypal'"
+      class="mt-8 w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition duration-300 flex items-center justify-center gap-2">
+      <span>Complete Purchase</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+        stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+
+    <p class="text-center text-gray-500 text-sm mt-5">
+      🔒 Secure Payment. Your information is encrypted.
+    </p>
+  </div>
 </section>
+
 <app-footer></app-footer>
