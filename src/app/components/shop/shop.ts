@@ -45,7 +45,6 @@ export class Shop implements OnInit {
       });
 
     } catch (error) {
-      console.error("❌ SignalR connection failed", error);
     }
 
     this._prodctDetails();
@@ -57,7 +56,6 @@ export class Shop implements OnInit {
       const res = await this.backendApi.getProductById(productId).toPromise();
       const updatedProduct = res.data;
       if (!updatedProduct || !updatedProduct.product_id) {
-        console.error("❌ Invalid product data from API:", updatedProduct);
         return;
       }
       const index = this.products.findIndex(p => p.product_id === updatedProduct.product_id);
@@ -80,7 +78,6 @@ export class Shop implements OnInit {
       this.cdr.detectChanges();
 
     } catch (err) {
-      console.error("❌ Failed to fetch updated product", err);
     }
   }
 
@@ -95,7 +92,6 @@ export class Shop implements OnInit {
         this.loading = false
       },
       error: (err) => {
-        console.error("Error fetching product list", err);
       }
     });
   }
@@ -117,7 +113,6 @@ export class Shop implements OnInit {
 
   onProductDetails(product: any) {
     if (!product || !product.product_id) {
-      console.error("Product id missing:", product);
       return;
     }
     this.router.navigate(['/product-details', product.product_id]);

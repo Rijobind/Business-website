@@ -67,7 +67,6 @@ export class CheckoutSuccess implements OnInit, AfterViewInit {
           this.checkoutItems = this.checkoutData.im_Checkoutlists;
         }
       },
-      error: (err) => console.error('Error loading checkout:', err)
     });
   }
 
@@ -83,7 +82,6 @@ export class CheckoutSuccess implements OnInit, AfterViewInit {
           this.selectedAddress = this.addresses[0];
         }
       },
-      error: (err) => console.error('Error fetching addresses:', err)
     });
   }
 
@@ -120,11 +118,9 @@ export class CheckoutSuccess implements OnInit, AfterViewInit {
       },
       onApprove: async (data: any, actions: any) => {
         const details = await actions.order.capture();
-        console.log('✅ Payment Successful:', details);
         this.completePurchaseWithPayPal(details);
       },
       onError: (err: any) => {
-        console.error('❌ PayPal Error:', err);
         alert('PayPal payment failed. Please try again.');
       }
     }).render(container);
@@ -139,8 +135,6 @@ export class CheckoutSuccess implements OnInit, AfterViewInit {
       payer_email: details.payer.email_address,
     };
 
-    console.log('Sending to backend:', payload);
-    // Example:
     this.checkoutService.completeCheckout(payload).subscribe({
       next: () => alert('Purchase completed successfully!'),
       error: (err) => alert('Error completing purchase.')

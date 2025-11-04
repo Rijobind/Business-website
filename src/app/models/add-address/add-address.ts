@@ -59,7 +59,6 @@ export class AddAddress implements OnInit {
       next: (res: any) => {
         this.countries = res.data || [];
       },
-      error: (err) => console.error('Failed to load countries', err)
     });
   }
 
@@ -90,13 +89,11 @@ export class AddAddress implements OnInit {
     this.backend.postAddressByUserId(userId, payload).subscribe({
       next: (res) => {
         const savedAddress = res.data || payload;
-        console.log('Saved address:', savedAddress);
         this.addressSaved.emit(savedAddress);
         this.close.emit();
         this.isSavingAddress = false;
       },
       error: (err) => {
-        console.error('Failed to save address', err);
         alert('Failed to save address.');
         this.isSavingAddress = false;
       }

@@ -53,7 +53,6 @@ export class UserProfile implements OnInit {
         this.isAddressLoading = false;
       },
       error: err => {
-        console.error('Failed to load address', err);
         this.isAddressLoading = false;
       }
     });
@@ -70,7 +69,6 @@ export class UserProfile implements OnInit {
         this.isLoading = false;
       },
       error: err => {
-        console.error('Failed to load order history', err);
         this.isLoading = false;
       }
     });

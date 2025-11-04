@@ -55,7 +55,6 @@ export class EditAddress implements OnInit {
   loadCountries() {
     this.backend.getCountryList().subscribe({
       next: (res: any) => (this.countries = res.data || []),
-      error: err => console.error('Failed to load countries', err)
     });
   }
 
@@ -82,18 +81,15 @@ export class EditAddress implements OnInit {
       address_2: this.address.address_2
     };
 
-    console.log('Payload sent:', payload);
 
     this.backend.postEditedAddressByAddressId(this.addressToEdit.address_id, payload).subscribe({
       next: (res) => {
         const updated = res.data || payload;
-        console.log('Updated address:', updated);
         this.addressUpdated.emit(updated);
         this.close.emit();
         this.isSaving = false;
       },
       error: (err) => {
-        console.error('Failed to update address', err);
         alert('Failed to update address.');
         this.isSaving = false;
       }
