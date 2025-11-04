@@ -1,4 +1,6 @@
 @import 'animate.css/animate.min.css';
+@import "quill/dist/quill.core.css";
+@import "quill/dist/quill.snow.css";
 
 @tailwind base;
 @tailwind components;
@@ -36,7 +38,7 @@ html {
 @keyframes fadeDown {
   from {
     opacity: 0;
-    transform: translateY(-10px); /* start from top */
+    transform: translateY(-10px); 
   }
   to {
     opacity: 1;

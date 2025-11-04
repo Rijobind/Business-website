@@ -48,7 +48,7 @@ export class Header implements OnInit {
   onReturnsPolicy() { this.router.navigate(['/returns-policy']); }
   onAcceptableUsePolicy() { this.router.navigate(['/acceptable-use-policy']); }
   onCookiePolicy() { this.router.navigate(['/cookie-policy']); }
-  oncancellationsbilling() { this.router.navigate(['/cancellations-billing']); }
+  oncancellationsbilling() { this.router.navigate(['/cancellations-and-billing']); }
   onPrivacyPolicy() { this.router.navigate(['/privacy-policy']); }
   onShop() { this.router.navigate(['/shop']); }
   onCart() { this.router.navigate(['/cart']); }

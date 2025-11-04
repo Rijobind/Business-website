@@ -98,9 +98,12 @@ export class BackendapiService {
     return this.http.get(`${this.apiUrl}/checkout/getcheckout-by-id/${checkoutId}`);
   }
 
-
   getProduct(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/Oonsoft/prodct_list_customer`);
+    return this.http.get(`${this.apiUrl}Oonsoft/prodct_list_customer`);
+  }
+
+  gettraccp(traccp_code: any): Observable<any> {
+    return this.http.get(`${this.apiUrl}Traccp/getteaccpbycode/${traccp_code}`);
   }
 
   postResetPassword(email: string): Observable<any> {

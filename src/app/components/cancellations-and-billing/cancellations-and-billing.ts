@@ -5,34 +5,31 @@ import { BackendapiService } from '../../services/backendapi.service/backendapi.
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-acceptable-use-policy',
+  selector: 'app-cancellations-and-billing',
   standalone: true,
   imports: [CommonModule, Header, Footer],
-  templateUrl: './acceptable-use-policy.html',
-  styleUrls: ['./acceptable-use-policy.css']
+  templateUrl: './cancellations-and-billing.html',
+  styleUrls: ['./cancellations-and-billing.css']
 })
-export class AcceptableUsePolicy implements OnInit {
-
-  traccpCode: string = 'acceptable-use-policy';
-  policyData: any = null;
-  isLoading: boolean = true;
+export class CancellationsAndBilling implements OnInit {
+  traccpCode: string = 'cancellations-and-billing';
+  termsData: any = null;
 
   constructor(private api: BackendapiService) { }
 
   ngOnInit(): void {
-    this.loadPolicyData();
+    this.loadCancellationsBilling();
   }
 
-  loadPolicyData() {
+  loadCancellationsBilling() {
     this.api.gettraccp(this.traccpCode).subscribe({
       next: (res) => {
         if (res && res.success && res.data) {
-          this.policyData = res.data;
+          this.termsData = res.data;
+        } else {
         }
-        this.isLoading = false;
       },
       error: (err) => {
-        this.isLoading = false;
       }
     });
   }

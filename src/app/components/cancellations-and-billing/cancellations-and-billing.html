@@ -1,11 +1,11 @@
 <app-header></app-header>
 
 <section class="mx-3">
-    <div *ngIf="cookieData; else loading"
+    <div *ngIf="termsData; else loading"
         class="max-w-7xl mt-28 mb-10 bg-red-50 rounded-3xl p-10 sm:p-6 mx-auto transform transition-all duration-300 hover:scale-[1.01] animate-fade-in"
         data-aos="fade-up" data-aos-delay="100">
         <div class="relative mx-auto text-gray-700 leading-relaxed">
-            <div class="ql-editor max-w-5xl" [innerHTML]="cookieData.traccp_description"></div>
+            <div class="ql-editor max-w-5xl" [innerHTML]="termsData.traccp_description"></div>
         </div>
     </div>
 

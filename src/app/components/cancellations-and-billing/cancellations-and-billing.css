@@ -57,37 +57,3 @@
     background-position: 200% 0;
   }
 }
-
-:host ::ng-deep .ql-editor ul,
-:host ::ng-deep .ql-editor ol {
-  padding-left: 1.5rem !important;
-  margin-bottom: 1rem !important;
-}
-
-:host ::ng-deep .ql-editor li {
-  display: list-item !important;
-  list-style: inherit !important;
-}
-
-/* Ensure Quill bullet icons appear (snow theme uses ::before pseudo-elements) */
-:host ::ng-deep .ql-editor ul > li::before {
-  content: '•';
-  color: #111827;
-  font-weight: bold;
-  display: inline-block;
-  width: 1rem;
-  margin-left: -1rem;
-}
-
-:host ::ng-deep .ql-editor ol > li::before {
-  counter-increment: list;
-  content: counter(list) ". ";
-  color: #111827;
-  display: inline-block;
-  width: 1.5rem;
-  margin-left: -1.5rem;
-}
-
-:host ::ng-deep .ql-editor ol {
-  counter-reset: list;
-}

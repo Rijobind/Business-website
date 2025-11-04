@@ -1,15 +1,49 @@
-   @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
 
-        .animate-fade-in {
-            animation: fadeIn 0.5s ease-out forwards;
-        }
+:host ::ng-deep .ql-editor {
+  max-width: 80rem;
+  margin: 0 auto;
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+:host ::ng-deep .ql-editor p {
+  margin-bottom: 1.25rem;
+}
+
+:host ::ng-deep .ql-editor h1 {
+  font-size: xx-large;
+}
+
+:host ::ng-deep .ql-editor h1,
+:host ::ng-deep .ql-editor h2,
+:host ::ng-deep .ql-editor h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+:host ::ng-deep .ql-editor ul,
+:host ::ng-deep .ql-editor ol {
+  margin-left: 2rem;
+  margin-bottom: 1.25rem;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #e5e7eb 25%, #f3f4f6 50%, #e5e7eb 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+  border-radius: 0.5rem;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
