@@ -74,11 +74,11 @@
           <img src="/assets/Stripe.png" alt="Stripe" class="h-6 mx-auto" />
         </button>
 
-        <button (click)="selectPayment('paypal')"
+        <!-- <button (click)="selectPayment('paypal')"
           [ngClass]="selectedPayment === 'paypal' ? 'ring-2 ring-indigo-500 bg-indigo-50' : ''"
           class="flex-1 bg-gray-100 hover:bg-indigo-100 transition p-3 rounded-xl border border-gray-200 shadow-sm hover:shadow-md">
           <img src="/assets/PayPal.png" alt="PayPal" class="h-6 mx-auto" />
-        </button>
+        </button> -->
       </div>
 
       <div *ngIf="selectedPayment === 'paypal'" #paypalContainer class="mt-6"></div>

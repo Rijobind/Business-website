@@ -13,9 +13,9 @@
                 </p>
             </div>
             <div *ngIf="productTitle" class="mb-4">
-                <p class="text-gray-600 mx-auto">
+                <!-- <p class="text-gray-600 mx-auto">
                     You’re contacting us about: <span class="font-bold">{{ productTitle }}</span>
-                </p>
+                </p> -->
             </div>
             <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-8">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -35,6 +35,8 @@
                     <label class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
                     <input type="text" placeholder="Subject" formControlName="subject"
                         class="w-full rounded-lg border border-gray-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none py-3 px-4 transition" />
+                    <span class=" font-extralight ml-2 mt-10"> You’re contacting us about: <span class="font-semibold">
+                            {{productTitle}}</span></span>
                 </div>
 
                 <div>

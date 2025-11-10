@@ -30,7 +30,7 @@ export class Footer {
     this.router.navigate(['/cookie-policy']);
   }
   onTermsOfcancellationsbilling() {
-    this.router.navigate(['/cancellations-billing']);
+    this.router.navigate(['/cancellations-and-billing']);
   }
   onPrivacyPolicy() {
     this.router.navigate(['/privacy-policy']);

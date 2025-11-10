@@ -5,7 +5,7 @@ import { Observable } from "rxjs";
 import { environment } from "../../environment/environment/environment";
 
 export interface ContactPayload {
-  fullName: string;
+  name: string;
   email: string;
   subject: string;
   message: string;
@@ -99,11 +99,11 @@ export class BackendapiService {
   }
 
   getProduct(): Observable<any> {
-    return this.http.get(`${this.apiUrl}Oonsoft/prodct_list_customer`);
+    return this.http.get(`${this.apiUrl}/Oonsoft/prodct_list_customer`);
   }
 
   gettraccp(traccp_code: any): Observable<any> {
-    return this.http.get(`${this.apiUrl}Traccp/getteaccpbycode/${traccp_code}`);
+    return this.http.get(`${this.apiUrl}/Traccp/getteaccpbycode/${traccp_code}`);
   }
 
   postResetPassword(email: string): Observable<any> {
@@ -139,7 +139,7 @@ export class BackendapiService {
 
 
   completeCheckout(payload: any) {
-    return this.http.post(`${this.apiUrl}Seller/add_invoice`, payload);
+    return this.http.post(`${this.apiUrl}/Seller/add_invoice`, payload);
   }
 
 }

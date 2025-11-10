@@ -1,6 +1,6 @@
 {
     "/api": {
-        "target": "https://apioonsoft.keesaexpress.com/api/",
+        "target": "https://apioonsoft.keesaexpress.com/api",
         "secure": false,
         "changeOrigin": true,
         "logLevel": "debug",
